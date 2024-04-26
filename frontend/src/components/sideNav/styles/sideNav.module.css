@@ -1,0 +1,19 @@
+.sideNavContainer{
+  top: 0;
+  z-index: 11;
+  left: -260px;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  transition: linear 0.2s;
+  background-color: var(--bg-8);
+}
+.sideNavCover{
+  top: 0;
+  z-index: 2;
+  left: -110vw;
+  width: 100dvw;
+  height: 100vh;
+  position: fixed;
+  background-color: #06000052;
+}

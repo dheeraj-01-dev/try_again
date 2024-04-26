@@ -1,0 +1,12 @@
+.navbar{
+  background: var(--bg-7);
+  padding: 0px 15px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+.rightComponent{
+  display: flex;
+}

@@ -1,0 +1,7 @@
+.navContainer{
+  background-color: var(--bg-10);
+  position: sticky;
+  top: 0;
+  margin-top: -5px;
+  padding: 7px 0 7px 0;
+}

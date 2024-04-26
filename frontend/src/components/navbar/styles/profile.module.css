@@ -1,0 +1,7 @@
+.home{
+  background-color: var(--bg-3);
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  margin-left: 5px;
+}
