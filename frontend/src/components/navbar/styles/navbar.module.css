@@ -10,3 +10,15 @@
 .rightComponent{
   display: flex;
 }
+
+
+@media screen and (min-width: 800px) {
+  .navbar{
+    height: 50px;
+    padding: 0 20px 0 10px;
+    background-color: var(--bg-10);
+    /* border-bottom: 2px solid var(--bg-8); */
+    border-radius: 0px;
+    /* background-color: slateblue; */
+  }
+}

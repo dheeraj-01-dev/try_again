@@ -1,0 +1,6 @@
+.eventDashboardContainer{
+  height: 140px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background-color: var(--bg-6);
+}

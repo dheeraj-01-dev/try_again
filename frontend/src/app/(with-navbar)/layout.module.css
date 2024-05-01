@@ -2,6 +2,11 @@
   background-color: var(--bg-10);
   position: sticky;
   top: 0;
-  margin-top: -5px;
-  padding: 7px 0 7px 0;
+  z-index: 11;
+  /* margin-top: -5px; */
+  /* padding: 0 0 7px 0;
+  background-color: rebeccapurple; */
+}
+.navChilds{
+  height: calc(100% - 40px);
 }

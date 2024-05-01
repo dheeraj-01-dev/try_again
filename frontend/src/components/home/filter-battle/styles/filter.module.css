@@ -1,0 +1,8 @@
+.container{
+  height: 45px;
+  position: sticky;
+  z-index: 1;
+  top: 0px;
+  margin-top: 10px;
+  background-color: var(--bg-8);
+}

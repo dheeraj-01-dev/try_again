@@ -1,0 +1,5 @@
+.profile{
+  height: 110px;
+  background-color: var(--bg-5);
+  border-bottom-right-radius: 60px;
+}

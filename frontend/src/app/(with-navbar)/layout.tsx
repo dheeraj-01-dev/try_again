@@ -10,13 +10,15 @@ function layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={styles.navContainer}>
-      <Navbar />
-      <SideNav />
-      <div>
+    <>
+      <div className={styles.navContainer}>
+        <Navbar />
+        <SideNav />
+      </div>
+      <div className={styles.navChilds}>
         {children}
       </div>
-    </div>
+    </>
   )
 }
 

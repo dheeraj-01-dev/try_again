@@ -3,7 +3,6 @@ const toggleSideNav = ()=>{
   sideNavContainer.classList.toggle("activeSideNav");
   
   const sideNavCover = document.getElementById("sideNavCover");
-  console.log(sideNavCover)
   sideNavCover?.classList.toggle("activeSideNav");
 }
 

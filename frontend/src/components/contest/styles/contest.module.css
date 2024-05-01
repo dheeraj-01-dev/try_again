@@ -1,0 +1,41 @@
+.contestContainer{
+  height: calc(100dvh - 57px);
+}
+.pageHeadlines{
+  height: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.headlineText{
+  display: grid;
+  cursor: pointer;
+  font-size: 120%;
+  color: #b5c3cf;
+  place-items: center;
+  
+}
+.highLighter{
+  height:4px;
+  width: 44%;
+  margin: 0 3%;
+  /* position: absolute; */
+  transition: all 0.5s;
+  border-radius: 10px;
+  background-color: #a9a9a9;
+}
+
+.contestPageContainer{
+  height: 100%;
+  display: flex;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  flex-direction: row;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.contestPages{
+  height: 100%;
+  padding: 10px;
+  min-width: 100%;
+  scroll-snap-align: start;
+}
