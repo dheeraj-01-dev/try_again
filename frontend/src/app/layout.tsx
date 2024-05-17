@@ -22,6 +22,9 @@ export default function RootLayout({
         <div className="navChildren">
           {children}
         </div>
+        <div id="globalToast">
+          <div id="toastText">Say me Anything!</div>
+        </div>
       </body>
     </html>
   );

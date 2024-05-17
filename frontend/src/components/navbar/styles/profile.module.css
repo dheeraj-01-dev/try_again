@@ -1,7 +1,18 @@
+.profileContainer{
+  display: flex;
+  align-items: center;
+}
 .home{
   background-color: var(--bg-3);
   height: 30px;
+  display: inline-block;
   width: 30px;
   border-radius: 100%;
   margin-left: 5px;
+}
+.loginText{
+  letter-spacing: 1px;
+  margin-right: 10px;
+  color: rgb(0, 179, 255);
+  text-decoration: underline;
 }

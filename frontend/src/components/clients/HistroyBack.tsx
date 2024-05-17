@@ -2,9 +2,12 @@
 import React, { CSSProperties } from 'react'
 import { useRouter } from 'next/navigation'
 
-const HistroyBack = ({children, styles}: { children:React.ReactElement, styles?: CSSProperties }) => {
+const HistroyBack = ({children, styles, home}: { children:React.ReactElement, styles?: CSSProperties, home?:boolean }) => {
   const router = useRouter();
   const goBack = ()=>{
+    if(home){
+      return router.push("/")
+    };
     router.back();
   }
   return (

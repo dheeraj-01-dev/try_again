@@ -20,6 +20,7 @@ const Links = () => {
       <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/support"&&styles.active}`} href="/support">Support</Link></div>
       <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/about"&&styles.active}`} href="/about">About us</Link></div>
       <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/terms"&&styles.active}`} href="/term">terms & condition</Link></div>
+      <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/login"&&styles.active}`} href="/login">login</Link></div>
       <div className={styles.linkContainer}>Log Out</div>
     </div>
   )
