@@ -12,8 +12,10 @@ const NavigateBack = ({children, styles, home}: {children:React.ReactElement, st
   };
   
   return (
-    <div style={styles} onClick={navigateBack}>
-      {children}
+    <div style={styles}>
+      <span onClick={navigateBack}>
+        {children}  
+      </span>
     </div>
   )
 }

@@ -1,6 +1,43 @@
-.modal{
-  margin: auto;
-  padding: 20px;
-}.btn-modal{
-  cursor: pointer;
+.register{
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  padding: 15px;
+  position: fixed;
+  background-color: var(--bg-10);
+}
+
+.section1{
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-evenly;
+}.section1RightSide{
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.mapContainer{
+  height: 70px;
+  width: 130px;
+  overflow: hidden;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+.map{
+  scale: 1.02;
+  border: none;
+  outline: none;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.gameMode{
+  font-size: 105%;
+  margin-bottom: 10px;
+}.teamMode{
+  letter-spacing: 2px;
+}.expiry{
+  font-size: 90%;
+  letter-spacing: 1px;
 }

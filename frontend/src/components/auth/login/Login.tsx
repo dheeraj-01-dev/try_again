@@ -22,10 +22,12 @@ const Login = () => {
   const handleLogin = async (e:any)=>{
     e.preventDefault();
 
+    const currentDate = +new Date();
     const json :apiType = await fetchUser({ [loginCredential]:loginCredential==="phone"?parseInt(loginIdentifier):loginIdentifier, password: loginPassword})
     if(json.success){
       console.log(json)
-      setCookie("u_state", json.data, {});
+      setCookie("u_state", json.data.token, {expires : new Date(currentDate+7776000000)});
+      setCookie("u_p_state", json.data.profile, {expires : new Date(currentDate+7776000000)});
       toast("Login successfull !");
       router.push("/");
       router.refresh();

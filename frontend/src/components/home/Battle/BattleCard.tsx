@@ -112,7 +112,7 @@ const BattleCard = ({
             teams.length >= slots && style.disable
           } ${style.battle_card_btn}`}
         >
-          Join now -{entry}
+          Join now - {entry}
         </Link>
         <Link href={`/battle/${_id}`}>
           <div className={style.battle_card_winnings}>

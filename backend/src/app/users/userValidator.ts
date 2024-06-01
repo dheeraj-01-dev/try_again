@@ -48,4 +48,8 @@ const validateLogin = (req: Request, res: Response, next: NextFunction)=>{
   })
 };
 
+export const findUser_V = async (req: Request, res: Response, next: NextFunction) => {
+  next()
+}
+
 export { validateRegistration, validateLogin }

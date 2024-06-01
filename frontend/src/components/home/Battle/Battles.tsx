@@ -9,7 +9,7 @@ const Battles = async () => {
   
   return (
     <div className={style.battles}>
-      {battles?.map((obj:any)=>{return <span key={obj._id}><BattleCard battle={obj} /></span>})}
+      {battles?.map((obj:any)=>{return <BattleCard key={obj._id} battle={obj} />})}
       {/* {!json[0].test&&json.map((obj)=>{return <BattleCard key={obj._id.$oid} battle={obj} />})} */}
       {!battles&&<div>
         Battle Cooming Soon !

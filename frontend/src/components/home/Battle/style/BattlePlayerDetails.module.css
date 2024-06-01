@@ -1,0 +1,50 @@
+.players{
+  padding: 15px;
+  height: 50px;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.4s;
+  background-color: #ffffff20;
+  background-color: var(--bg-4);
+}
+.players-banner{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+}
+.players-arrow{
+  cursor: pointer;
+  margin-right: 30px;
+  transition: all 0.4s;
+}
+.teams{
+  height: 100%;
+  overflow: auto;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+.team{
+  margin:10px 0;
+  display: flex;
+  border-radius: 4px;
+  padding: 12px 30px;
+  align-items: center;
+  background-color: #151F27;
+  justify-content: space-between;
+}
+.team img{
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 510px) {
+  .players{
+    background-color: #151F27;
+  }
+  .team{
+    background-color: #0b151d;
+  }
+}
+@media screen and (max-width: 510px) {
+}

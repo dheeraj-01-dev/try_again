@@ -3,6 +3,7 @@ import { userModel } from "./userModel.js";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
 import { Request, Response } from "express";
+import { error } from "console";
 
 config();
 
@@ -50,7 +51,10 @@ export const loginUser = async (req :any, res :any) => {
     const token = jwt.sign({ name, _id, ffUid, userName, createAt }, jwt_secret);
     res.status(200).json({
       success: true,
-      data: token
+      data: {
+        token,
+        profile: "/icons/user.png"
+      }
     })
   } catch (err :any){
     res.status(500).json({
@@ -59,6 +63,53 @@ export const loginUser = async (req :any, res :any) => {
     })
   }
 };
+
+export const findUser_C = async (req :Request, res :Response) => {
+  const { user } = req.params;
+  try {
+    const userFound = await userModel.aggregate([
+      {
+        '$match': {
+          '$or': [
+            {
+              'userName': user
+            }, {
+              'ffUid': parseInt(user)
+            }
+          ]
+        }
+      }, {
+        '$project': {
+          'name': 1, 
+          'ffUid': 1, 
+          '_id': 0, 
+          'profile': 1, 
+          'userName': 1
+        }
+      }
+    ]);
+  
+    if(userFound.length){
+      return res.status(200).json({
+        success: true,
+        data: {
+          user: userFound
+        }
+      })
+    }
+    res.status(400).json({
+      success: false,
+      error: "user not found !"
+    })
+    
+  } catch (err :any) {
+    res.status(500).json({
+      success: false,
+      error: err.message
+    })
+  }
+    
+}
 
 export const getSingleUser =async (req :any, res :any) => {
   const { user } = req.params;
@@ -131,3 +182,4 @@ export const updateUserData = async (req  :any, res :any) => {
   }
   
 };
+

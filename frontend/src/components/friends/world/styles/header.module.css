@@ -1,0 +1,22 @@
+.header{
+  margin-top: 5px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* padding: 5px 10px; */
+  /* background: var(--bg-3); */
+  border-radius: 100px;
+}
+.headline{
+  display: flex;
+  align-items: center;
+}.worldTemplate{
+  font-size: 120%;
+  margin-left: 20px;
+}
+
+.linkC{
+  margin-right: 20px;
+  /* margin-top: 10px; */
+}

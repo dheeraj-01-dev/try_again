@@ -42,5 +42,8 @@ const validateLogin = (req, res, next) => {
         message: validReq.error?.issues[0].message
     });
 };
+export const findUser_V = async (req, res, next) => {
+    next();
+};
 export { validateRegistration, validateLogin };
 //# sourceMappingURL=userValidator.js.map

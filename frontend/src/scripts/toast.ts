@@ -1,3 +1,5 @@
+"use client"
+
 const toast = ( message: string|number|undefined|null )=>{
   
   const globalToast = document.getElementById("globalToast");

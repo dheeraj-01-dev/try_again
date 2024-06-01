@@ -1,5 +1,6 @@
 .battle-details{
   /* margin-bottom: 100px; */
+  background-color: var(--bg-10);
 }
 .arrow-back{
   position: absolute;
@@ -77,13 +78,13 @@
 }
 
 .section2{
-  padding: 10px;
-  /* background-color: rgba(250, 235, 215, 0.286); */
+  padding: 20px;
 }
 
 .setting{
   font-size: 110%;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
+  padding: 10px;
 }
 
 .setting-span{
@@ -138,7 +139,7 @@
 }
 @media screen and (max-width: 510px) {
   .winners{
-    padding: 40px 0 20px 0;
+    padding: 40px 0 0px 0;
     /* height: 100px; */
   }
   .register-btn-container{

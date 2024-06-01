@@ -4,6 +4,8 @@ import style from './styles/page.module.css'
 import { fetchSingleBattle } from "@/api/battle/battles";
 import { apiType } from "@/api/types/apiTypes";
 import toast from "@/scripts/toast";
+import NavigateBack from "@/hooks/Navigate.back";
+import Image from "next/image";
 
 const page = async ({params}: {params: {battleId: string}}) => {
   
@@ -11,10 +13,22 @@ const page = async ({params}: {params: {battleId: string}}) => {
   const json :apiType = await fetchSingleBattle(_id);
 
   if(!json.success){
-    toast(json.error);
     return (
       <div>
-
+        <NavigateBack styles={{
+          margin: "15px"
+        }}>
+          <Image width={20} height={20} src="/icons/arrowLeftWhite.png" alt="back" />
+        </NavigateBack>
+        <div style={{
+          height: "80dvh",
+          fontSize: "200%",
+          display: "grid",
+          placeItems: "center",
+          opacity: 0.5
+        }}>
+          Battle Not Found !
+        </div>
       </div>
     )
   }  

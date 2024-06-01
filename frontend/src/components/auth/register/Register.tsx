@@ -8,15 +8,17 @@ import Link from 'next/link'
 import axios from 'axios'
 import z from 'zod'
 import toast from '@/scripts/toast'
+import { registerUser } from '@/api/user/register'
+import { apiType } from '@/api/types/apiTypes'
 
 const Register = () => {
   
   const router = useRouter();
   const [phone, setPhone] = useState<string>("")
-  const [loginPassword, setLoginPassword] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
   const [Name, setName] = useState<string>("")
   const [ffUid, setFfUid] = useState<string>("")
-  const [Email, setEmail] = useState<string>("")
+  const [email, setEmail] = useState<string>("")
   const [userName, setUserName] = useState<string>("")
 
   const handleRegistration = async ()=>{
@@ -25,8 +27,8 @@ const Register = () => {
       ffUid: parseInt(ffUid?ffUid:""),
       userName: userName,
       phone: parseInt(phone?phone:""),
-      email: Email,
-      password: loginPassword
+      email: email,
+      password: password
     };
     
     const inputSchema = z.object({
@@ -43,26 +45,18 @@ const Register = () => {
       toast(isInputValid.error.errors[0].message);
       return;
     };
-    console.log(isInputValid.data);
 
     try {
-      const data = await axios({
-        method: "POST",
-        url: "http://192.168.45.43:5000/user/auth/register",
-        data: {
-          "name": Name,
-          "ffUid": parseInt(ffUid?ffUid:""),
-          "userName": userName,
-          "phone": parseInt(phone?phone:""),
-          "email": Email,
-          "password": loginPassword
-        }
-      });
-      const user = data.data;
-      setCookie("u_state", user);
-      toast("Registration successfull !")
-      router.push("/");
-      router.refresh();
+      const json :apiType= await registerUser({Name, phone, email, userName, ffUid, password});
+      if(json.success){
+        const user = json.data;
+        setCookie("u_state", user);
+        toast("Registration successfull !")
+        router.push("/");
+        router.refresh();
+      }else{
+        toast(json.error?json.error:json.message)
+      }
     } catch (err:any) {
       toast(err.response?.data.message);
       // console.log(err.response.data.message);
@@ -97,11 +91,11 @@ const Register = () => {
           </div>
           <div className={styles.inputContainer}>
             <Image src="/icons/attach.png" height={20} width={20} alt="user" />
-            <input autoComplete='off' spellCheck={false} autoCorrect='off' value={Email} onChange={(e)=>{setEmail(e.target.value)}} id='loginPassword' type="email" placeholder="Email" />
+            <input autoComplete='off' spellCheck={false} autoCorrect='off' value={email} onChange={(e)=>{setEmail(e.target.value)}} id='loginPassword' type="email" placeholder="Email" />
           </div>
           <div className={styles.inputContainer}>
             <Image src="/icons/high-score.png" height={20} width={20} alt="user" />
-            <input autoCapitalize='none' autoComplete='off' spellCheck={false} autoCorrect='off' value={loginPassword} onChange={(e)=>{setLoginPassword(e.target.value)}} id='loginPassword' type="text" placeholder="password" />
+            <input autoCapitalize='none' autoComplete='off' spellCheck={false} autoCorrect='off' value={password} onChange={(e)=>{setPassword(e.target.value)}} id='loginPassword' type="text" placeholder="password" />
           </div>
           <div className={styles.submitContainer}>
             <Link className={styles.registerLink} href={"/login"}>Login?</Link>

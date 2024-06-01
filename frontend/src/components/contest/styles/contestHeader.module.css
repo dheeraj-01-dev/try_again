@@ -1,5 +1,5 @@
 .contestContainer{
-  height: calc(100dvh - 57px);
+  /* height: calc(100dvh - 57px); */
 }
 .pageHeadlines{
   height: 40px;
@@ -17,12 +17,15 @@
 }
 .highLighter{
   height:4px;
-  width: 44%;
+  width: calc(50dvw - 30px);
   margin: 0 3%;
-  /* position: absolute; */
-  transition: all 0.5s;
+  position: absolute;
+  transition: all 0.4s;
   border-radius: 10px;
   background-color: #a9a9a9;
+}
+.highLightCompleted{
+  margin-left: calc(50dvw - 5px);
 }
 
 .contestPageContainer{
@@ -36,7 +39,6 @@
 }
 .contestPages{
   height: 100%;
-  padding: 10px;
   min-width: 100%;
   scroll-snap-align: start;
 }

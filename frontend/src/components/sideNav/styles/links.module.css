@@ -6,7 +6,7 @@
 .links{
   width: 100%;
   display: block;
-  color: #9e9e9e;
+  color: #a6a6a6;
   border-radius: 5px;
   padding: 10px 10px 10px 20px;
 }
@@ -15,7 +15,7 @@
 }
 .active{
   color: #040e17 !important;
-  background-color: #9e9e9e;
+  background-color: #a6a6a6;
 }
 .active:hover{
   color: #040e17 !important;

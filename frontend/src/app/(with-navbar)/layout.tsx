@@ -3,6 +3,7 @@ import React from 'react'
 
 import styles from './layout.module.css'
 import SideNav from '@/components/sideNav/SideNav';
+import Footer from '@/components/footer/Footer';
 
 function layout({
   children,
@@ -14,6 +15,7 @@ function layout({
       <div className={styles.navContainer}>
         <Navbar />
         <SideNav />
+        <Footer />
       </div>
       <div className={styles.navChilds}>
         {children}

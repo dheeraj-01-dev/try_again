@@ -3,9 +3,9 @@ import axios from "axios"
 
 const domain = process.env.API_DOMAIN;
 
-const fetchUser = async ({phone, email, password}: {phone?:number, email?:number, password?: string}) => {
+const fetchUser = async ({phone, email, password}: {phone?:number, email?:number, password: string}) => {
   try {
-    const data = await axios({
+    const json = await axios({
       method: "POST",
       url: `${domain}/user/auth/login`,
       data: {
@@ -14,7 +14,7 @@ const fetchUser = async ({phone, email, password}: {phone?:number, email?:number
         password
       }
     });
-    return data.data;
+    return json.data;
   } catch (err: any) {
     console.log(err)
     return err.response.data;

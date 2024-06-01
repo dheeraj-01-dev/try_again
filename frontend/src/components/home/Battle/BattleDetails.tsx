@@ -2,14 +2,14 @@ import Image from 'next/image'
 import React from 'react'
 import style from './style/BattleDetails.module.css'
 import Link from 'next/link';
-// import BattlePlayerDetails from '@/client/BattlePlayerDetails/BattlePlayerDetails';
 import NavigateBack from '@/hooks/Navigate.back';
+import BattlePlayerDetails from './BattlePlayerDetails';
 
 const BattleDetails = ({
   battle,
 }: {
   battle: {
-    _id: { $oid: string };
+    _id: string;
     battleId: number;
     settings: {
       ammo: string;
@@ -29,7 +29,7 @@ const BattleDetails = ({
     __v: number;
   };
 }) => {
-  const { _id: {$oid}, settings: { map }, winning: { _1, _2, _3 }, entry } = battle;
+  const { _id, settings: { map }, winning: { _1, _2, _3 }, entry } = battle;
 
   return (
     <div className={style['battle-details']}>
@@ -56,7 +56,7 @@ const BattleDetails = ({
         </div>
         <div className={style['register-btn-container']}>
           <div className={style['register-btn']}>
-            <Link href={`/battle/register/${$oid}`}><button>Join now - {entry}</button></Link>
+            <Link href={`/battle/register/${_id}`}><button>Join now - {entry}</button></Link>
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@ const BattleDetails = ({
           <div className={style['room-id']}>Room id: <span>239202943 <Image width={15} height={15} src="/icons/copy.png" alt="copy" /></span></div>
           <div className={style['room-pass']}> Room pass: <span>23423 <Image width={15} height={15} src="/icons/copy.png" alt="copy" /></span> </div>
         </div>}
-        {/* <BattlePlayerDetails /> */}
+        <BattlePlayerDetails />
         <div className={style['settings']}>
           <div className={style['setting']}> <span className={style['setting-span']}>Game mode</span>Battle Royal</div>
           <div className={style['setting']}> <span className={style['setting-span']}>Team mode</span>2v2</div>
