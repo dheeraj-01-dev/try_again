@@ -12,21 +12,6 @@
   justify-content: center;
   align-items: flex-end;
 }
-.profile{
-  /* background-color: var(--bg-3); */
-  height: 30px;
-  display: inline-block;
-  width: 30px;
-  border-radius: 100%;
-  margin-left: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  overflow: hidden;
-  border: 2px solid var(--bg-1);
-}.profile a{
-  display: flex;
-}
 .loginText{
   letter-spacing: 1px;
   margin-right: 10px;

@@ -22,9 +22,10 @@ const Profile = async () => {
           <Image width={20} height={20} alt="profile" src="/icons/headset.png" />
         </Link>
       </div>
-      <div className={styles.profile}>
+      <div className={styles.home}>
         <Link className={styles.a} href={"/profile"}>
-          <Image height={22} width={22} loading='lazy' alt="profile" src="/icons/user.png" />
+          {/* <Image height={30} width={32} loading='lazy' unoptimized alt="profile" src="/men.png" /> */}
+          <Image height={20} width={20} loading='lazy' unoptimized alt="profile" src="/icons/user.png" />
         </Link>
       </div>
     </div>:

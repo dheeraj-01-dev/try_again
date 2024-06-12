@@ -16,7 +16,6 @@ const fetchUser = async ({phone, email, password}: {phone?:number, email?:number
     });
     return json.data;
   } catch (err: any) {
-    console.log(err)
     return err.response.data;
   }
 };
