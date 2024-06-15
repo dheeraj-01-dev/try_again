@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import NavigateBack from '@/hooks/Navigate.back'
 
-const page = async () => {
+const Profile = async () => {
   let user = {
     name: "dheeraj",
     userName: "dheeraj.2024",
@@ -85,4 +85,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default Profile
