@@ -1,0 +1,9 @@
+.header{
+  display: flex;
+  align-items: center;
+}
+.notificationBanner{
+  font-size: 140%;
+  margin-left: 20px;
+  opacity: 0.9;
+}

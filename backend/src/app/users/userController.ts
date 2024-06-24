@@ -53,6 +53,7 @@ export const loginUser = async (req :any, res :any) => {
       success: true,
       data: {
         token,
+        _id,
         profile: "/icons/user.png"
       }
     })
@@ -82,7 +83,7 @@ export const findUser_C = async (req :Request, res :Response) => {
         '$project': {
           'name': 1, 
           'ffUid': 1, 
-          '_id': 0, 
+          '_id': 1, 
           'profile': 1, 
           'userName': 1
         }

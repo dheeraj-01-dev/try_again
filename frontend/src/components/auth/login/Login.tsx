@@ -27,6 +27,7 @@ const Login = () => {
     if(json.success){
       setCookie("u_state", json.data.token, {expires : new Date(currentDate+7776000000)});
       setCookie("u_p_state", json.data.profile, {expires : new Date(currentDate+7776000000)});
+      setCookie("i_state", json.data._id, {expires : new Date(currentDate+7776000000)});
       toast("Login successfull !");
       router.push("/");
       router.refresh();
