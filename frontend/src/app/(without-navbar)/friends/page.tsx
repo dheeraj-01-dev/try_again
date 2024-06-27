@@ -1,18 +1,13 @@
 import React from 'react'
 import styles from './page.module.css'
-import SearchSection from '@/components/friends/home/SearchSection'
-import AllChat from '@/components/friends/home/AllChat'
-import LoginRequired from '@/components/auth/login/LoginRequired'
+import SearchBox from '@/components/friends/new-conversation/SearchBox'
+import AllFriends from '@/components/friends/new-conversation/AllFriends'
 
 const page = () => {
   return (
-    <div className={styles.page}>
-      <SearchSection />
-      <AllChat /> 
-      <LoginRequired>
-        <div>
-        </div> 
-      </LoginRequired>
+    <div className={styles.newConversation}>
+      <SearchBox />
+      <AllFriends />
     </div>
   )
 }

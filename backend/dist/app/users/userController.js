@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { userModel } from "./userModel.js";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
+import mongoose from "mongoose";
 config();
 const jwt_secret = process.env.JWT_SECRET_STR || "MAI_HU_DON_MAI_HU_DON....MUJHE_ROKEGA_KON>?SKLDFJ2934N23MNR09DNMIUAE90UNDAKFIH9OA8U90U9&*_+_89JH898'ASDF";
 export const registerUser = async (req, res) => {
@@ -178,6 +179,41 @@ export const updateUserData = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "invalid user"
+        });
+    }
+};
+export const getAllFriends_C = async (req, res) => {
+    const { auth } = req.headers;
+    try {
+        const friends = await userModel.aggregate([
+            {
+                '$match': {
+                    "_id": new mongoose.Types.ObjectId(`${auth}`)
+                }
+            }, {
+                '$lookup': {
+                    'from': 'users',
+                    'localField': 'friends.allFriends',
+                    'foreignField': '_id',
+                    'as': 'friend_details'
+                }
+            }, {
+                '$project': {
+                    'friend_details.userName': 1,
+                    'friend_details.profile': 1,
+                    'friend_details.ffUid': 1,
+                }
+            }
+        ]);
+        res.status(200).json({
+            success: true,
+            data: friends[0]
+        });
+    }
+    catch (err) {
+        res.status(500).json({
+            success: false,
+            error: "something went wrong !"
         });
     }
 };

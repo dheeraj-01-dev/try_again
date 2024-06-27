@@ -31,7 +31,7 @@ const Footer = () => {
       <Link href="/contest">
         <Image className={`${contest&&styles.active}`} height={23} width={23} alt='' src="/icons/cart-a7.png" />
       </Link>
-      <Link href="/friends">
+      <Link href="/friends/chats">
         <Image className={`${friends&&styles.active}`} height={23} width={30} alt='' src="/icons/friends-a7.png" />
       </Link>
     </div>

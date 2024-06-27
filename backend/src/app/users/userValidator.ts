@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import mongoose from 'mongoose';
 import z from 'zod';
 
 const validateRegistration = (req:Request, res:Response, next:NextFunction)=>{
@@ -50,6 +51,23 @@ const validateLogin = (req: Request, res: Response, next: NextFunction)=>{
 
 export const findUser_V = async (req: Request, res: Response, next: NextFunction) => {
   next()
+};
+
+export const getAllFriends_V = async (req: Request, res: Response, next: NextFunction) => {
+  const { auth } = req.headers;
+  const schema = z.instanceof(mongoose.Types.ObjectId, {message: "not authorized"});
+  try {
+    
+    const verified = schema.safeParse(new mongoose.Types.ObjectId(`${auth}`));
+    if(verified.success){
+      return next();
+    }
+  } catch (err) {
+    res.status(404).json({
+      success: false,
+      error: "not authorized !"
+    })
+  }
 }
 
 export { validateRegistration, validateLogin }

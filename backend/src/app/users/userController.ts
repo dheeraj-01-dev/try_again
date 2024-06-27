@@ -3,7 +3,7 @@ import { userModel } from "./userModel.js";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
 import { Request, Response } from "express";
-import { error } from "console";
+import mongoose from "mongoose";
 
 config();
 
@@ -184,3 +184,38 @@ export const updateUserData = async (req  :any, res :any) => {
   
 };
 
+
+export const getAllFriends_C = async (req :Request, res :Response) => {
+  const { auth } = req.headers;
+  try {
+    const friends = await userModel.aggregate([
+      {
+        '$match': {
+          "_id": new mongoose.Types.ObjectId(`${auth}`)
+        }
+      }, {
+        '$lookup': {
+          'from': 'users', 
+          'localField': 'friends.allFriends', 
+          'foreignField': '_id', 
+          'as': 'friend_details'
+        }
+      }, {
+        '$project': {
+          'friend_details.userName': 1, 
+          'friend_details.profile': 1,
+          'friend_details.ffUid': 1,
+        }
+      }
+    ]);
+    res.status(200).json({
+      success: true,
+      data: friends[0]
+    })
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: "something went wrong !"
+    })
+  }
+}
