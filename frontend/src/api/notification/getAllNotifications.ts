@@ -3,6 +3,7 @@ import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 const domain = process.env.API_DOMAIN;
 
 const fetchAllNotification = async ({auth}: {auth: string | RequestCookie | undefined}) => {
+  console.log(auth)
   if(auth===undefined){
     return {
       success: false,
@@ -17,6 +18,7 @@ const fetchAllNotification = async ({auth}: {auth: string | RequestCookie | unde
         auth: `${auth}`
       }
     });
+    console.log(json.data)
     return json.data;
   } catch (err :any) {
     return err.response.data

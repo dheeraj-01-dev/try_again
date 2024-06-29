@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    API_DOMAIN: "http://13.55.38.174:5000"
+    API_DOMAIN: "http://192.168.160.131:5000"
   }
 };
 

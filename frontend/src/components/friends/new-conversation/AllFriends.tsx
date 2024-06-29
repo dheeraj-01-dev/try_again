@@ -1,18 +1,27 @@
+"use client"
 import Link from 'next/link'
 import React from 'react'
 import styles from './styles/allFriends.module.css'
 import Image from 'next/image'
-import { getallFriends } from '@/api/friends/get-allFriends'
-import { cookies } from 'next/headers'
-import { apiType } from '@/api/types/apiTypes'
 
-const AllFriends = async () => {
-  const cookieStore = cookies();
-  const auth = cookieStore.get("i_state")?.value;
-  const json :apiType= await getallFriends({ auth });
+const AllFriends = ({friends} : {friends: Array<any>}) => {
 
-  const friends :Array<any>= json.data.friend_details;
+  const foucusTargetFriend =  async (e :any)=>{
+    console.log(e.currentTarget.parentNode.children)
+    for (let i = 0; i < e.currentTarget.parentNode.children.length; i++) {
+      const elements = e.currentTarget.parentNode.children[i];
+      console.log(elements)
 
+      elements.classList.remove(styles.activeBorder);
+      elements.children[1].classList.remove(styles.showActionBox);
+    }
+    e.currentTarget.classList.toggle(styles.activeBorder);
+    e.currentTarget.children[1].classList.toggle(styles.showActionBox);
+    }
+
+
+
+  
   return (
     <div>
       <div className={styles.addFriendBox}>
@@ -29,11 +38,24 @@ const AllFriends = async () => {
       <div>
         {
           friends.map(obj => (
-            <div key={obj.userName} className={styles.friendBox}>
-              <Image className={styles.friendsProfile} height={65} width={65} alt='' src={obj.profile} />
-              <div className={styles.names}>
-                <div className={styles.userName}>{obj.userName}</div>
-                <div className={styles.uid}>{obj.ffUid}</div>
+            <div onClick={foucusTargetFriend} key={obj.userName} className={styles.friendBox}>
+              <div className={styles.friendTemplate}>
+                <Image className={styles.friendsProfile} height={65} width={65} alt='' src={obj.profile} />
+                <div className={styles.names}>
+                  <div className={styles.userName}>{obj.userName}</div>
+                  <div className={styles.uid}>{obj.ffUid}</div>
+                </div>
+              </div>
+              <div className={styles.actionBox}>
+                <div className={styles.actions}>
+                  <Image height={20} width={20} alt='' src="/icons/info.png" />
+                </div>
+                <div className={styles.actions}>
+                  <Image height={20} width={20} alt='' src="/icons/chat.png" />
+                </div>
+                <div className={styles.actions}>
+                  <Image height={20} width={20} alt='' src="/icons/user.png" />
+                </div>
               </div>
             </div>
           ))

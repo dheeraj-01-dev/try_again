@@ -20,7 +20,6 @@ export const riseFriendRequest_V = async (req: Request, res: Response, next: Nex
     from: new mongoose.Types.ObjectId(from),
     to: new mongoose.Types.ObjectId(to)
   });
-
   if(validSchma.success){
     next();
   }else{
