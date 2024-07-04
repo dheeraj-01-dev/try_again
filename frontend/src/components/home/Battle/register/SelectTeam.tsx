@@ -1,8 +1,9 @@
 "use client"
 import React from 'react'
-import styles from './styles/register.module.css'
+import styles from './styles/selectTeam.module.css'
+import Image from 'next/image'
 
-const Register = ({params}: {params: {battleId: string}}) => {
+const SelectTeam = ({params}: {params: {battleId: string}}) => {
   const openModal = ()=>{
     (document.querySelector('#modal') as HTMLDialogElement).showModal();
     const balckFilm = document.getElementById("registerBatteModalBlackFilm");
@@ -20,8 +21,9 @@ const Register = ({params}: {params: {battleId: string}}) => {
   
   return (
     <div className={styles.modalContainer}>
-      {/* hello battle register {params.battleId} */}
-      <button className={styles.btnModal} onClick={openModal}>Open Modal</button>
+      <div className={styles.openModalBtn} onClick={openModal}>
+        <Image height={20} width={20} unoptimized alt=' ' src="/icons/plus.png" />
+      </div>
       <div id='registerBatteModalBlackFilm' onClick={closeModal} className={styles.blackFilm}></div>
       <dialog id='modal' className={styles.modal}>
         <div>
@@ -32,4 +34,4 @@ const Register = ({params}: {params: {battleId: string}}) => {
   )
 }
 
-export default Register
+export default SelectTeam

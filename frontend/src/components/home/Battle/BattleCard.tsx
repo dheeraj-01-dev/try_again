@@ -117,8 +117,8 @@ const BattleCard = ({
         <Link href={`/battle/${_id}`}>
           <div className={style.battle_card_winnings}>
             <Image
-              width={35}
-              height={29}
+              width={33}
+              height={27}
               src="/icons/trophy.png"
               alt="winnings"
             />

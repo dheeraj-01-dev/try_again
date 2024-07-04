@@ -1,0 +1,74 @@
+.confirmationContainer{
+}
+.confirmationBox{
+  margin: auto;
+  overflow: hidden;
+  width: calc(100dvw - 50px);
+  background: var(--bg-7);
+  padding: 10px;
+}
+.battleMode{
+  font-size: 130%;
+  margin: 7px 0 25px 0;
+}.teamMode{
+  padding: 2px;
+  opacity: 0.9;
+  font-size: 110%;
+  padding-right: 30px;
+}.teamMode span{
+  float: right;
+  font-size: 120%;
+}
+
+
+
+.map{
+  margin: -10px -10px 0 -10px;
+  width: calc(100% + 20px);
+  height: 130px;
+  scale: 1.02;
+  object-fit: cover;
+}
+.submitBtn{
+  letter-spacing: 1px;
+  border: none;
+  padding: 7px 20px;
+  border-radius: 6px;
+  background: #1e82aa;
+  margin: 10px;
+  float: right;
+}.submitBtn:disabled{
+  opacity: 0.5;
+}
+
+
+
+
+.teamBox{
+  border: 2px solid gray;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}.teamSelector{
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.balanceControllerBox{
+  margin-top: 30px;
+}
+.balanceInfo{
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  margin: 10px 5px;
+  padding: 0 10px;
+  opacity: 0.8;
+  font-size: 140%;
+}
+.balanceInfo:nth-child(3){
+  border-top: 3px solid gray;
+  padding-top: 10px;
+}

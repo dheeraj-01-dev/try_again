@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createBattle = void 0;
 const battle_models_1 = __importDefault(require("./battle.models"));
 const createBattle = async (req, res) => {
+    console.log(req.body);
     try {
         const battle = await battle_models_1.default.create(req.body);
         res.json(battle);

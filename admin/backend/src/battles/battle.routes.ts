@@ -4,6 +4,6 @@ import { createBattle } from "./battle.controller";
 
 const battleRouter = Router();
 
-battleRouter.post("/create", validateBattle, createBattle)
+battleRouter.post("/create", createBattle)
 
 export default battleRouter;

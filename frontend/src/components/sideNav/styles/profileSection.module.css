@@ -10,8 +10,8 @@
 }
 
 .linkContainer{
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 700 !important;
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-weight: 500 !important;
   margin: 0 20px;
   display: flex;
   /* align-items: center; */
@@ -40,7 +40,7 @@
 }
 .uid{
   opacity: 0.8;
-  font-size: 80%;
+  font-size: 70%;
   letter-spacing: 1px;
 }
 

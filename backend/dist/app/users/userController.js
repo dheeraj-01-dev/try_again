@@ -58,6 +58,36 @@ export const loginUser = async (req, res) => {
         });
     }
 };
+export const getPersonalInfo_C = async (req, res) => {
+    const { authorization } = req.headers;
+    try {
+        const persnolInfo = await userModel.aggregate([
+            {
+                '$match': {
+                    '_id': new mongoose.Types.ObjectId(authorization)
+                }
+            }, {
+                '$unset': 'password'
+            }
+        ]);
+        if (persnolInfo.length < 1) {
+            return res.status(404).json({
+                success: false,
+                error: "user not found !"
+            });
+        }
+        res.status(200).json({
+            success: true,
+            data: persnolInfo[0]
+        });
+    }
+    catch (err) {
+        res.status(500).json({
+            success: false,
+            error: "something went wrong !"
+        });
+    }
+};
 export const findUser_C = async (req, res) => {
     const { user } = req.params;
     try {

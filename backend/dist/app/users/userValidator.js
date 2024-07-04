@@ -43,6 +43,34 @@ const validateLogin = (req, res, next) => {
         message: validReq.error?.issues[0].message
     });
 };
+export const getPersonalInfo_V = async (req, res, next) => {
+    const { authorization } = req.headers;
+    if (!authorization) {
+        return res.status(400).json({
+            success: false,
+            error: "not authorized !"
+        });
+    }
+    ;
+    const schema = z.instanceof(mongoose.Types.ObjectId, { message: "invalid User !" });
+    try {
+        const validSchema = schema.safeParse(new mongoose.Types.ObjectId(authorization));
+        if (validSchema.success) {
+            return next();
+        }
+        ;
+        res.status(400).json({
+            success: false,
+            error: validSchema.error
+        });
+    }
+    catch (err) {
+        res.status(400).json({
+            success: false,
+            error: "invalid user !"
+        });
+    }
+};
 export const findUser_V = async (req, res, next) => {
     next();
 };

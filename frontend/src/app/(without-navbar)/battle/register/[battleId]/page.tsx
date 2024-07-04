@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './page.module.css'
-import Register from '@/components/home/Battle/register/Register'
 import NavigateBack from '@/hooks/Navigate.back'
 import Image from 'next/image'
 import { fetchSingleBattle } from '@/api/battle/battles'
 import { apiType } from '@/api/types/apiTypes'
+import ConfirmationBattle from '@/components/home/Battle/register/ConfirmationBattle'
 
 const page = async ({params}: {params: {battleId: string}}) => {
   const json :apiType= await fetchSingleBattle(params.battleId);
@@ -16,7 +16,7 @@ const page = async ({params}: {params: {battleId: string}}) => {
       <NavigateBack>
         <Image height={20} width={20} alt='back' src="/icons/arrowLeftWhite.png" />
       </NavigateBack>
-      <div className={styles.section1}>
+      {/* <div className={styles.section1}>
         <div className={styles.mapContainer}>
           <Image className={styles.map} height={70} width={130} alt={map} src={"/maps/"+map+".png"} />
         </div>
@@ -29,8 +29,8 @@ const page = async ({params}: {params: {battleId: string}}) => {
           </div>
           <div className={styles.expiry}>7 June, 2024 | 17:00</div>
         </div>
-      </div>
-      <Register params={{battleId: params.battleId}} />
+      </div> */}
+      <ConfirmationBattle battleId={params.battleId} />
     </div>
   )
 }

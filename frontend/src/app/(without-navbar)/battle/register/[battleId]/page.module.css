@@ -5,6 +5,7 @@
   height: 100dvh;
   padding: 15px;
   position: fixed;
+  overflow: auto;
   background-color: var(--bg-10);
 }
 

@@ -1,6 +1,6 @@
 .modalContainer{
   /* background-color: rebeccapurple; */
-  height: 80dvh;
+  /* height: 80dvh; */
 }
 .modal{
   position: absolute;
@@ -12,15 +12,12 @@
   color: var(--color);
   background: var(--bg-5);
   border: 2px solid var(--bg-1);
-}.btnModal{
-  background: none;
-  outline: none;
-  border: 2px solid var(--bg-1);
-  padding: 5px 15px;
-  cursor: pointer;
-  z-index: 1;
-  margin: 20px;
-  float: right;
+}.openModalBtn{
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+}.openModalBtn img{
+  opacity: 0.7;
 }
 
 .blackFilm{
@@ -31,7 +28,7 @@
   left: 0;
   z-index: 0;
   background-color: black;
-  opacity: 0.4;
+  opacity: 0.5;
   display: none;
 }
 

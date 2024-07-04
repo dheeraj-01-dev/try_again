@@ -40,7 +40,7 @@ const AllFriends = ({friends} : {friends: Array<any>}) => {
           friends.map(obj => (
             <div onClick={foucusTargetFriend} key={obj.userName} className={styles.friendBox}>
               <div className={styles.friendTemplate}>
-                <Image className={styles.friendsProfile} height={65} width={65} alt='' src={obj.profile} />
+                <Image className={styles.friendsProfile} height={50} width={50} alt='' src={obj.profile} />
                 <div className={styles.names}>
                   <div className={styles.userName}>{obj.userName}</div>
                   <div className={styles.uid}>{obj.ffUid}</div>
@@ -48,13 +48,19 @@ const AllFriends = ({friends} : {friends: Array<any>}) => {
               </div>
               <div className={styles.actionBox}>
                 <div className={styles.actions}>
-                  <Image height={20} width={20} alt='' src="/icons/info.png" />
+                  <Link href={`/profile/${obj.userName}`}>
+                    <Image height={20} width={20} alt='' src="/icons/info.png" />
+                  </Link>
                 </div>
                 <div className={styles.actions}>
-                  <Image height={20} width={20} alt='' src="/icons/chat.png" />
+                  <Link href={`/profile/${obj.userName}`}>
+                    <Image height={20} width={20} alt='' src="/icons/chat.png" />
+                  </Link>
                 </div>
                 <div className={styles.actions}>
-                  <Image height={20} width={20} alt='' src="/icons/user.png" />
+                  <Link href={`/profile/${obj.userName}`}>
+                    <Image height={20} width={20} alt='' src="/icons/user.png" />
+                  </Link>
                 </div>
               </div>
             </div>

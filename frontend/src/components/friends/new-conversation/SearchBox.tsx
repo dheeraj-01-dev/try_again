@@ -7,7 +7,7 @@ const SearchBox = () => {
   return (
     <div>
       <div className={styles.header}>
-        <NavigateBack styles={{height: "18px"}}>
+        <NavigateBack home styles={{height: "18px"}}>
           <Image width={18} height={18} alt='' src="/icons/arrowLeftWhite.png" />
         </NavigateBack>
         <span className={styles.newMessageTemplate}>New Message</span>

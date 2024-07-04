@@ -68,7 +68,7 @@
     background: linear-gradient(97deg, #C92812 0%, #E45309 100%);
 }.battle_card_winnings{
     display: flex;
-    font-size: 220%;
+    font-size: 200%;
     color: #D9D9D9;
     align-items: center;
     justify-content: center;
