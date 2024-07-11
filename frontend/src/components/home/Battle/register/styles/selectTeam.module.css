@@ -1,35 +1,67 @@
 .modalContainer{
   /* background-color: rebeccapurple; */
   /* height: 80dvh; */
+  color: var(--color);
 }
+
 .modal{
   position: absolute;
-  height: 60dvh;
   margin: auto;
+  z-index: 1;
+  height: 70dvh;
+  border: none;
   padding: 10px;
-  width: calc(100dvw - 60px);
-  border-radius: 4px;
   color: var(--color);
-  background: var(--bg-5);
-  border: 2px solid var(--bg-1);
-}.openModalBtn{
-  height: 20px;
-  width: 20px;
+  border-radius: 10px;
+  width: calc(100dvw - 50px);
+  background: var(--bg-7);
+  background: #0e0e0f;
+}
+.modalContainer dialog:focus{
+  outline: none;
+}
+/* .modalBox{
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100dvw;
+  transform: scale(0);
+  transition: all 0.3s;
+  display: grid;
+  place-items: center;
+}
+.modal{
+  z-index: 3;
+  height: 80dvh;
+  padding: 10px;
+  background: var(--bg-7);
+  width: calc(100dvw - 50px);
+} */
+
+.openModalBtn{
   overflow: hidden;
 }.openModalBtn img{
+  opacity: 0.8;
+}.closeModalBtn{
+  font-size: 150%;
   opacity: 0.7;
+  margin-right: 10px;
+  float: right;
 }
 
 .blackFilm{
   height: 100dvh;
   width: 100dvw;
-  position: absolute;
+  position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
   z-index: 0;
   background-color: black;
-  opacity: 0.5;
-  display: none;
+  opacity: 0.6;
+  /* display: none; */
 }
 
 

@@ -22,12 +22,14 @@ const SelectTeam = ({params}: {params: {battleId: string}}) => {
   return (
     <div className={styles.modalContainer}>
       <div className={styles.openModalBtn} onClick={openModal}>
-        <Image height={20} width={20} unoptimized alt=' ' src="/icons/plus.png" />
+        <Image height={15} width={15} unoptimized alt=' ' src="/icons/plus.png" />
       </div>
-      <div id='registerBatteModalBlackFilm' onClick={closeModal} className={styles.blackFilm}></div>
+      {/* <div id='registerBatteModalBlackFilm' onClick={closeModal} className={styles.blackFilm}></div> */}
       <dialog id='modal' className={styles.modal}>
         <div>
-          <button className={styles.btnModal} onClick={closeModal}>close</button>  
+          <span className={styles.closeModalBtn} onClick={closeModal}>
+            x
+          </span>  
         </div>
       </dialog>
     </div>

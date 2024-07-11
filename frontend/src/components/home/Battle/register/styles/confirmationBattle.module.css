@@ -1,8 +1,6 @@
-.confirmationContainer{
-}
 .confirmationBox{
   margin: auto;
-  overflow: hidden;
+  overflow: hidden; 
   width: calc(100dvw - 50px);
   background: var(--bg-7);
   padding: 10px;
@@ -45,7 +43,7 @@
 
 
 .teamBox{
-  border: 2px solid gray;
+  border: 3px solid var(--bg-3);
   padding: 10px 15px;
   border-radius: 10px;
   margin-top: 20px;

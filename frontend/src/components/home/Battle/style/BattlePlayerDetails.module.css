@@ -4,8 +4,8 @@
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.4s;
-  background-color: #ffffff20;
   background-color: var(--bg-4);
+  /* background: #41c0f3; */
 }
 .players-banner{
   display: flex;
@@ -22,7 +22,8 @@
   height: 100%;
   overflow: auto;
   margin-top: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+  &&::-webkit-scrollbar {width: 0px;}
 }
 .team{
   margin:10px 0;

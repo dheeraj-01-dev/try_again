@@ -207,15 +207,10 @@ a {
 
 
 
-.battle-details-player-arrow-rotate{
-  transform: rotate(180deg);
-}.battle-details-player-show{
-  transition: all 1s;
-  height: 700px !important;
-}#battle-details-team-section{
+/* #battle-details-team-section{
   &&::-webkit-scrollbar {width: 0px;}
 }#battle-details-section-2-for-pc{
   &&::-webkit-scrollbar {width: 5px;}
   &&::-webkit-scrollbar-track {background: none;}
   &&::-webkit-scrollbar-thumb {background: #282828;}
-};
+}; */

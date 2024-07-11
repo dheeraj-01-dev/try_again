@@ -53,7 +53,7 @@ const AllFriends = ({friends} : {friends: Array<any>}) => {
                   </Link>
                 </div>
                 <div className={styles.actions}>
-                  <Link href={`/profile/${obj.userName}`}>
+                  <Link href={`/chat/dheeraj.mafia`}>
                     <Image height={20} width={20} alt='' src="/icons/chat.png" />
                   </Link>
                 </div>

@@ -21,6 +21,7 @@ const BattleDetails = ({
       chatacterSkill: string;
       loadout: string;
     };
+    teams: Array<any>,
     expire: string;
     entry: number;
     winning: { _1: number; _2: number; _3: number };
@@ -29,7 +30,7 @@ const BattleDetails = ({
     __v: number;
   };
 }) => {
-  const { _id, settings: { map }, winning: { _1, _2, _3 }, entry } = battle;
+  const { _id, settings: { map, slots }, winning: { _1, _2, _3 }, entry, teams } = battle;
 
   return (
     <div className={style['battle-details']}>
@@ -66,7 +67,7 @@ const BattleDetails = ({
           <div className={style['room-id']}>Room id: <span>239202943 <Image width={15} height={15} src="/icons/copy.png" alt="copy" /></span></div>
           <div className={style['room-pass']}> Room pass: <span>23423 <Image width={15} height={15} src="/icons/copy.png" alt="copy" /></span> </div>
         </div>}
-        <BattlePlayerDetails />
+        <BattlePlayerDetails teams={teams} slots={slots} />
         <div className={style['settings']}>
           <div className={style['setting']}> <span className={style['setting-span']}>Game mode</span>Battle Royal</div>
           <div className={style['setting']}> <span className={style['setting-span']}>Team mode</span>2v2</div>

@@ -1,0 +1,37 @@
+.inputBox{
+  padding: 10px 20px;
+  background: var(--bg-4);
+  border-radius: 20px;
+  width: 100%;
+  /* width: calc(100dvw - 20px); */
+}
+.input{
+  height: auto;
+  resize: none;
+  color: #d9d9d9;
+  background: var(--bg-4);
+  font-size: 16px;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.chatBox{
+  position: fixed;
+  bottom: 10px;
+}
+
+
+.inputArea{
+  display: flex;
+  align-items: flex-end;
+  width: calc(100dvw - 20px);
+}
+.sendBtn{
+  height: 42px;
+  width: 70px;
+  margin-left: 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 50px;
+  background: #000;
+}

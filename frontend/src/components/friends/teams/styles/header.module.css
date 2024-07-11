@@ -1,0 +1,8 @@
+.headerBox{
+  padding: 7px;
+  display: flex;
+  align-items: flex-end;
+}
+.teamsTemplate{
+  margin-left: 20px;
+}
