@@ -3,8 +3,8 @@ import styles from './styles/teams.module.css'
 
 const Teams = () => {
   return (
-    <div>
-      
+    <div className={styles.teams}>
+      Create Team !!
     </div>
   )
 }

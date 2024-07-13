@@ -8,6 +8,7 @@ const exo = Exo_2({weight: "400", subsets: ["cyrillic"]})
 
 export const metadata: Metadata = {
   title: "Batalusa",
+  description: "battleroya esports tournaments battleroya.com"
 };
 
 export default async function RootLayout({

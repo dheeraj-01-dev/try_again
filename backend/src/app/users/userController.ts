@@ -24,7 +24,7 @@ export const registerUser = async (req :Request, res :Response)=>{
       success: true,
       userToken: token
     })
-  } catch (err :any) {    
+  } catch (err :any) {
     const key = Object.keys(err.keyValue)[0];    
     res.status(400).json({
       success: false,
