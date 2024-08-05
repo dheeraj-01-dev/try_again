@@ -2,9 +2,9 @@ import axios from "axios";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 const domain = process.env.API_DOMAIN;
 
-const fetchAllNotification = async ({auth}: {auth: string | RequestCookie | undefined}) => {
-  console.log(auth)
-  if(auth===undefined){
+const getAllNotifications = async ({Authorization}: {Authorization: string | RequestCookie | undefined}) => {
+  console.log(Authorization)
+  if(Authorization===undefined){
     return {
       success: false,
       error: "not authorized !"
@@ -15,7 +15,7 @@ const fetchAllNotification = async ({auth}: {auth: string | RequestCookie | unde
       method: "GET",
       url: `${domain}/notification/all`,
       headers: {
-        auth: `${auth}`
+        Authorization: `${Authorization}`
       }
     });
     console.log(json.data)
@@ -25,4 +25,4 @@ const fetchAllNotification = async ({auth}: {auth: string | RequestCookie | unde
   }
 };
 
-export { fetchAllNotification }
+export { getAllNotifications }

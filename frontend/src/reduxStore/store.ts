@@ -3,7 +3,7 @@ import loginSlice from "./slices/isLogin/login.slice";
 
 export const store = configureStore({
   reducer: {
-    isLogin: loginSlice
+    isLogin: loginSlice,
   }
 });
 

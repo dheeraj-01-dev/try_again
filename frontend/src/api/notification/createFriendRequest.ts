@@ -1,8 +1,9 @@
+"use server"
 import axios from "axios";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 const domain = process.env.API_DOMAIN;
 
-const riseFriendRequest = async ({auth, to}: {auth: string | RequestCookie | undefined, to: string}) => {
+const createFriendRequest = async ({auth, to}: {auth: string | RequestCookie | undefined, to: string}) => {
   if(auth===undefined){
     return {
       success: false,
@@ -14,7 +15,7 @@ const riseFriendRequest = async ({auth, to}: {auth: string | RequestCookie | und
       method: "POST",
       url: `${domain}/notification/friend-request/create`,
       headers: {
-        from: `${auth}`
+        Authorization: `${auth}`
       },
       data: { to }
     });
@@ -24,4 +25,4 @@ const riseFriendRequest = async ({auth, to}: {auth: string | RequestCookie | und
   }
 };
 
-export { riseFriendRequest }
+export { createFriendRequest }

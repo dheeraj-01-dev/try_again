@@ -56,12 +56,14 @@
 
 
 .balanceControllerBox{
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .balanceInfo{
-  display: grid;
-  grid-template-columns: 4fr 2fr;
-  margin: 10px 5px;
+  /* display: grid;
+  grid-template-columns: 4fr 2fr; */
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px;
   padding: 0 10px;
   opacity: 0.8;
   font-size: 140%;
@@ -69,4 +71,20 @@
 .balanceInfo:nth-child(3){
   border-top: 3px solid gray;
   padding-top: 10px;
+}
+
+.selectedMemberBox{
+  margin-top: 15px;
+}
+.selectedMember{
+  font-size: 90%;
+  margin-left: 10px;
+  margin-bottom: 7px;
+}
+
+.selectedMemberLengthTemplate{
+  margin-left: 10px;
+  font-size: 80%;
+  color: #039cd8;
+  font-weight: 700;
 }

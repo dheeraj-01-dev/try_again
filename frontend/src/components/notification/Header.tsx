@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <HistroyBack styles={{display: "inline", height: 18}}>
-        <Image width={18} height={18} alt='' src="/icons/arrowLeftWhite.png" />
+        <Image width={15} height={15} alt='' src="/icons/arrowLeftWhite.png" />
       </HistroyBack>
       <span className={styles.notificationBanner}>Notifications</span>
     </div>

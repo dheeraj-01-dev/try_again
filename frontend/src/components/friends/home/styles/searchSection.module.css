@@ -1,11 +1,11 @@
 .titleBox{
   display: flex;
   margin: 0 5px;
-  align-items: center;
+  align-items: flex-end;
 }
 .textMessage{
-  font-size: 130%;
-  margin-left: 10px;
+  font-size: 110%;
+  margin-left: 15px;
 }
 .addfriends{
   width: 100%;

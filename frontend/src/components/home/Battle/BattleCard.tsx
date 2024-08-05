@@ -107,7 +107,7 @@ const BattleCard = ({
       </Link>
       <div className={style.battle_card_section_2}>
         <Link
-          href={isLogin ? `/battle/register/${_id}` : "/login"}
+          href={isLogin ? `/battle/checkout/${_id}` : "/login"}
           className={`${!isLogin && style.disable_light} ${
             teams.length >= slots && style.disable
           } ${style.battle_card_btn}`}

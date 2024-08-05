@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation'
 import { setCookie } from 'cookies-next'
 import Link from 'next/link'
 import toast from '@/scripts/toast'
-import { fetchUser } from '@/api/user/login'
+// import { fetchUser } from '@/api/user/login'
 import { apiType } from '@/api/types/apiTypes'
 
-const Login = () => {
+const Login = ({fetchUser}: {fetchUser: Function}) => {
   
   const router = useRouter();
   let [loginIdentifier, setLoginIdentifier] = useState("")
@@ -28,6 +28,7 @@ const Login = () => {
       setCookie("u_state", json.data.token, {expires : new Date(currentDate+7776000000)});
       setCookie("u_p_state", json.data.profile, {expires : new Date(currentDate+7776000000)});
       setCookie("i_state", json.data._id, {expires : new Date(currentDate+7776000000)});
+      setCookie("u_n_state", json.data.userName, {expires : new Date(currentDate+7776000000)});
       toast("Login successfull !");
       router.push("/");
       router.refresh();

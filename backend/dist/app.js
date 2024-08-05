@@ -5,6 +5,7 @@ import battleRouter from './app/battles/battle.routes.js';
 config();
 import cors from 'cors';
 import notificatonRouter from './app/notification/notification.routes.js';
+import teamRouter from './app/team/team.routes.js';
 const app = express();
 app.use(cors());
 app.use(express.json({
@@ -21,6 +22,7 @@ app.use(express.json({
 app.use("/user", userRouter);
 app.use("/battle", battleRouter);
 app.use("/notification", notificatonRouter);
+app.use("/team", teamRouter);
 app.all('*', (req, res) => {
     res.status(404).json({
         success: false,

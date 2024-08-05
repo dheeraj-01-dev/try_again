@@ -57,7 +57,7 @@ const BattleDetails = ({
         </div>
         <div className={style['register-btn-container']}>
           <div className={style['register-btn']}>
-            <Link href={`/battle/register/${_id}`}><button>Join now - {entry}</button></Link>
+            <Link href={`/battle/checkout/${_id}`}><button>Join now - {entry}</button></Link>
           </div>
         </div>
       </div>

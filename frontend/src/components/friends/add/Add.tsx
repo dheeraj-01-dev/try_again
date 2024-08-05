@@ -7,7 +7,8 @@ import findUser from '@/api/user/findUser'
 import { apiType } from '@/api/types/apiTypes'
 import toast from '@/scripts/toast'
 import Link from 'next/link'
-import { riseFriendRequest } from '@/api/friends/riseFriendRequest'
+import { createFriendRequest } from '@/api/notification/createFriendRequest'
+import FriendsSearchBox from '@/components/temp/FriendSearchBox'
 
 const Add = ({auth}: {auth: string | undefined}) => {
   const [userToken, setUserToken] = useState("");
@@ -41,7 +42,7 @@ const Add = ({auth}: {auth: string | undefined}) => {
   }
 
   const riseRequest = async ({to}: {to: string})=>{
-    const json :apiType= await riseFriendRequest({auth, to})
+    const json :apiType= await createFriendRequest({auth, to})
     console.log(json)
     if(json.error){
       toast(json.error)
@@ -60,9 +61,10 @@ const Add = ({auth}: {auth: string | undefined}) => {
         <span className={styles.addTemplate}>Add</span>
       </div>
       <div className={styles.inputContainer}>
-        <form onSubmit={submitForm}>
+        <FriendsSearchBox />
+        {/* <form onSubmit={submitForm}>
           <input autoCapitalize="off" onChange={updateUser} value={userToken} type="search" className={styles.searchInput} placeholder='uid or username' />
-        </form>
+        </form> */}
       </div>
       
       <div>

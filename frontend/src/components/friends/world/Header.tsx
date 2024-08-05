@@ -9,13 +9,13 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.headline}>
         <NavigateBack home styles={{height: "17px", width: "17px"}}>
-          <Image width={17} height={17} alt='' src="/icons/arrowLeftWhite.png" />
+          <Image width={15} height={15} alt='' src="/icons/arrowLeftWhite.png" />
         </NavigateBack>
         <div className={styles.worldTemplate}>World</div>
       </div>
       <div className={styles.linkC}>
         <Link className={styles.link} href="/world">
-          <Image className='' height={27} width={27} alt='' src="/icons/world-chat.png" />
+          <Image className='' height={20} width={20} alt='' src="/icons/world-chat.png" />
         </Link>
       </div>
     </div>

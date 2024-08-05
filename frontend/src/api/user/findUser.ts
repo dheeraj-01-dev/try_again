@@ -1,3 +1,4 @@
+"use server"
 import axios from "axios";
 const domain = process.env.API_DOMAIN;
 

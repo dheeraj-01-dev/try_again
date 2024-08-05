@@ -1,21 +1,20 @@
 import mongoose, { SchemaTypes } from 'mongoose';
 import z from 'zod';
-export const riseFriendRequest_V = async (req, res, next) => {
-    const { from } = req.headers;
+export const createFriendRequest_V = async (req, res, next) => {
+    const { authorization } = req.headers;
     const { to } = req.body;
-    if (from === to) {
+    if (authorization === to) {
         return res.status(404).json({
             success: false,
             error: "illigal operation !"
         });
     }
     const schema = z.object({
-        from: z.instanceof(mongoose.Types.ObjectId, { message: "not authorized !" }),
-        to: z.instanceof(mongoose.Types.ObjectId, { message: "invalid user" })
+        authorization: z.string({ message: "not authorized!" }),
+        to: z.string({ message: "invalid user" })
     });
     const validSchma = schema.safeParse({
-        from: new mongoose.Types.ObjectId(from),
-        to: new mongoose.Types.ObjectId(to)
+        authorization, to
     });
     if (validSchma.success) {
         next();

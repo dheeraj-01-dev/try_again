@@ -13,7 +13,7 @@ const toast = ( message: string|number|undefined|null )=>{
 
   setTimeout(() => {
     globalToast.style.display = "none"
-  }, 2300);
+  }, 3000);
   
 };
 

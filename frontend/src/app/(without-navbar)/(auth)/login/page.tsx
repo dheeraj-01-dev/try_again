@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import Login from '@/components/auth/login/Login'
 import NavigateBack from '@/hooks/Navigate.back'
 import Image from 'next/image'
+import { fetchUser } from '@/api/user/login'
 
 const page = () => {
   return (
@@ -12,7 +13,7 @@ const page = () => {
       }}>
         <Image height={20} width={20} src="/icons/arrowLeftWhite.png" alt="Navigate-back" />
       </NavigateBack>
-      <Login/>
+      <Login fetchUser={fetchUser}/>
     </div>
   )
 }

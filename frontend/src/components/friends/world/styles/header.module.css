@@ -10,10 +10,10 @@
 }
 .headline{
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }.worldTemplate{
-  font-size: 120%;
-  margin-left: 20px;
+  font-size: 110%;
+  margin-left: 15px;
 }
 
 .linkC{

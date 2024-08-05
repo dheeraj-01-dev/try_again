@@ -1,9 +1,19 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
-const NavigateBack = ({children, styles, home}: {children:React.ReactElement, styles?:React.CSSProperties, home?:boolean}) => {
+const NavigateBack = ({children, styles, home, auto}: {children:React.ReactElement, styles?:React.CSSProperties, home?:boolean, auto?:boolean}) => {
   const router = useRouter();
+  if(auto){
+    useEffect(() => {
+      router.back();
+    }, [])
+    return (
+      <div>
+        
+      </div>
+    )
+  }
   const navigateBack = ()=>{
     if(home){
       return router.push("/")

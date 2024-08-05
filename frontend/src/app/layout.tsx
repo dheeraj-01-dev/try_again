@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Exo_2, Inter, Itim } from "next/font/google";
 import "./globals.css";
+import ConnectToSocketIO from "@/components/ConnectToSocketIO";
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 const itim = Itim({ weight: "400", style: "normal", subsets: ["latin"]}) 
@@ -26,6 +29,7 @@ export default async function RootLayout({
         <div id="globalToast">
           <div id="toastText">Say me Anything!</div>
         </div>
+        <ConnectToSocketIO />
       </body>
     </html>
   );

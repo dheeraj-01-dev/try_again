@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 const notificationSchema = new mongoose.Schema({
     from: {
-        type: mongoose.Schema.ObjectId,
+        type: String,
         ref: "users"
     },
     to: {
-        type: mongoose.Schema.ObjectId,
+        type: String,
         ref: "users",
         required: [true, "to field requried"]
     },
@@ -21,6 +21,6 @@ const notificationSchema = new mongoose.Schema({
         type: String,
     }
 });
-const notificationModel = mongoose.model("notificatons", notificationSchema);
+const notificationModel = mongoose.model("notifications", notificationSchema);
 export default notificationModel;
 //# sourceMappingURL=notification.model.js.map

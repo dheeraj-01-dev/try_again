@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './page.module.css'
-import SearchBox from '@/components/friends/new-conversation/SearchBox'
-import AllFriends from '@/components/friends/new-conversation/AllFriends'
 import { cookies } from 'next/headers'
 import { getallFriends } from '@/api/friends/get-allFriends'
 import { apiType } from '@/api/types/apiTypes'
+import Titles from '@/components/temp/Titles'
+import AllFriendSection from '@/components/friends/AllFriendSection'
+import FriendsSearchBox from '@/components/temp/FriendSearchBox'
 
 const page = async () => {
   const cookieStore = cookies();
@@ -15,8 +16,9 @@ const page = async () => {
 
   return (
     <div className={styles.newConversation}>
-      <SearchBox />
-      <AllFriends friends={friends} />
+      <Titles title="Friends" />
+      <FriendsSearchBox style={{marginBottom: "10px"}} />
+      <AllFriendSection friends={friends} />
     </div>
   )
 }
