@@ -1,13 +1,15 @@
 .profileContainer{
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  height: 24px;
+  margin-right: 10px;
 }
 .home{
-  height: 30px;
+  height: 17px;
   display: inline-block;
-  width: 30px;
+  width: 17px;
   border-radius: 100%;
-  margin-left: 5px;
+  margin-left: 15px;
   display: flex;
   justify-content: center;
   align-items: flex-end;

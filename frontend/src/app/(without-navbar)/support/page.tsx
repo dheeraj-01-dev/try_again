@@ -1,9 +1,14 @@
 import React from 'react'
+import styles from './page.module.css'
+import Support from '@/components/support/Support'
+import S2 from '@/components/support/S2'
+// import Support from '@/components/chatgpt/Support'
 
 const page = () => {
   return (
-    <div>
-      HI Support
+    <div className={styles.support}>
+      {/* <Support /> */}
+      <S2 />
     </div>
   )
 }

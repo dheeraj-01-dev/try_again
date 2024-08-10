@@ -10,7 +10,8 @@ const itim = Itim({ weight: "400", style: "normal", subsets: ["latin"]})
 const exo = Exo_2({weight: "400", subsets: ["cyrillic"]})
 
 export const metadata: Metadata = {
-  title: "Batalusa",
+  title: "Battleroyale Esports",
+  icons: "/icons/logo.png",
   description: "battleroya esports tournaments battleroya.com"
 };
 

@@ -37,7 +37,7 @@ const Teams = ({teams} :{teams :apiType}) => {
               <div>
                 {
                   team.members.map( (member :any) => (
-                    <div className={styles.teamMembers}>
+                    <div key={member.userName} className={styles.teamMembers}>
                       <span>
                         <Image className={styles.avatar} height={40} width={40} alt='' src={member.profile} />
                         <div className={styles.memberInfo}>

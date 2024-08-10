@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import styles from "./styles/confirmationBattle.module.css";
 import Image from "next/image";
 import SelectTeam from "./SelectTeam";
-import UserTemplates from "@/components/temp/UserTemplates";
 import toast from "@/scripts/toast";
 
 const teamModeInt: string[] = ["", "Solo", "Duo", "", "Squad"];

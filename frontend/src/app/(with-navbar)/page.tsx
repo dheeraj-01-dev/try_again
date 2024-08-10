@@ -9,7 +9,7 @@ import Loading from '@/components/Loading'
 
 const page = async () => {
   return (
-    <div className={styles.home}> 
+    <div className={styles.home}>
       <EventDashboard />
       <FilterBattle />
       <Battles/>

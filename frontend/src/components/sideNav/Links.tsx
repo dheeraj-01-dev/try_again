@@ -32,7 +32,7 @@ const Links = () => {
       <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/refer"&&styles.active}`} href="/refer"><span className={styles.iconContainer}><Image width={20} height={20} alt='' src="/icons/share-a7.png" /></span>Refral</Link></div>
       <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/support"&&styles.active}`} href="/support"><span className={styles.iconContainer}><Image width={20} height={20} alt='' src="/icons/headset-a7.png" /></span>Support</Link></div>
       <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/about"&&styles.active}`} href="/about"><span className={styles.iconContainer}><Image width={13} height={20} alt='' src="/icons/terminal-a7.png" /></span>About us</Link></div>
-      <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/terms"&&styles.active}`} href="/term"><span className={styles.iconContainer}><Image width={13} height={20} alt='' src="/icons/terminal-a7.png" /></span>terms & condition</Link></div>
+      <div className={styles.linkContainer}><Link onClick={toggleSideNav} className={`${styles.links} ${pathName==="/terms"&&styles.active}`} href="/terms"><span className={styles.iconContainer}><Image width={13} height={20} alt='' src="/icons/terminal-a7.png" /></span>terms & condition</Link></div>
       <div className={styles.logoutContainer} onClick={logOut}><span className={styles.iconContainer}><Image width={20} height={20} alt='' src="/icons/logout-a7.png" /></span>Log Out</div>
     </div>
   )

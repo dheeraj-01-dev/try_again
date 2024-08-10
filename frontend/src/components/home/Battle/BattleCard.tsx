@@ -22,10 +22,10 @@ function share() {
 }
 
 const BattleCard = ({
-  battle
+  battle,
 }: {
   battle: {
-    _id: string,
+    _id: string;
     battleId: number;
     settings: {
       map: string;
@@ -38,20 +38,20 @@ const BattleCard = ({
       slots: number;
     };
     expire: {
-      id: number,
-      year: number,
-      month: number,
-      date: number,
-      hour: number,
-      minute: number,
-      second: number
+      id: number;
+      year: number;
+      month: number;
+      date: number;
+      hour: number;
+      minute: number;
+      second: number;
     };
     entry: number;
     winning: { _1: number; _2: number; _3: number };
     createdAt: { $date: string };
     teams: any;
     __v: number;
-  }
+  };
 }) => {
   const {
     _id,
@@ -67,11 +67,11 @@ const BattleCard = ({
   const isLogin = cokkieStore.get("u_state");
 
   return (
-    <div className={style.battle_card}>
+    <div className={`${style.battle_card} ${style.section}`}>
       <div className={style.battle_card_header}>
         {gameMode} &nbsp; [{map}]
-        <Image 
-        // onClick={share}
+        <Image
+          // onClick={share}
           style={{ cursor: "pointer" }}
           height={17}
           width={17}
@@ -85,8 +85,8 @@ const BattleCard = ({
             {/* <Kalahari /> */}
             <Image
               src={`/maps/${map}.png`}
-              width={150}
-              height={90}
+              width={140}
+              height={73}
               alt="battle_card_thumbnail"
               className={style.battle_card_thumbnail}
             />

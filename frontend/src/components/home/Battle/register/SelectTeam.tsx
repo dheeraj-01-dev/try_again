@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./styles/selectTeam.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const SelectTeam = ({
   params,
@@ -51,8 +52,8 @@ const SelectTeam = ({
             {teams ? teams[0].teamName : ""}
             {children}
           </span>
-          <div className={styles.closeModalBtn} onClick={closeModal}>
-            x
+          <div>
+            <Link className={styles.addMemberLink} href="" >+add member</Link>
           </div>
         </div>
         <div className={styles.applyBtnBox}>

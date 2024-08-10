@@ -15,9 +15,9 @@
     /* background-color: var(--bg-7); */
     background: linear-gradient(90deg, var(--bg-8), var(--bg-6));
 }.battle_card_header{
-    margin: 10px;
+    margin: 10px 10px 15px 10px;
     display: flex;
-    font-size: 110%;
+    font-size: 105%;
     font-weight: 600;
     align-items: center;
     justify-content: space-between;
@@ -53,13 +53,15 @@
 }.battle_card_section_2{
     margin: 0 15px;
     display: grid;
-    grid-template-columns: 8fr 11fr;
+    grid-template-columns: 2fr 3fr;
 }.battle_card_btn{
     gap: 10px;
     margin: auto;
     display: flex;
-    padding: 10px;
-    color: #e1e1e1;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 90%;
+    font-weight: 500;
     border-radius: 7px;
     align-items: center;
     max-width: max-content;
@@ -73,7 +75,7 @@
     align-items: center;
     justify-content: center;
 }.battle_card_footer{
-    margin:-2px 10px 10px;
+    margin: 4px 10px 10px;
 }.battle_card_count{
     font-size: 70%;
 }.battle_card_outliner{
@@ -110,3 +112,30 @@
     border: 2px solid #e14b00;
     background: linear-gradient(97deg, #ad2311 0%, #b74308 100%);
 }
+
+
+
+
+
+
+
+
+
+
+.section {
+    background-color: var(--bg-8);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    flex: 1 1 calc(33.333% - 40px);
+    min-width: 280px;
+    max-width: 400px;
+    margin-bottom: 7px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #ddd;
+  }
+  
+  .section:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  }
