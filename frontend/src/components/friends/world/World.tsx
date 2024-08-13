@@ -4,7 +4,7 @@ import styles from "./styles/world.module.css";
 import Image from "next/image";
 import UserTemplates from "@/components/temp/UserTemplates";
 import { apiType } from "@/api/types/apiTypes";
-import axios from "axios";
+import axios from "axios"; 
 
 interface sampleUserInterface {
   ffUid: number;
@@ -66,11 +66,14 @@ const World = ({
             return (
               <div key={user.userName}>
                 <UserTemplates
+                onClick={()=>{}}
                   style={{ margin: "12px" }}
                   dimension={45}
-                  userName={user.userName}
-                  uid={user.ffUid}
-                  profile={"/men.png"}
+                  user={{
+                    userName: user.userName,
+                    ffUid: user.ffUid,
+                    profile: "/men.png"
+                  }}
                   alt="x"
                   requestBtn
                   requestFun={friendRequestFunction}
@@ -88,11 +91,14 @@ const World = ({
                 return (
                   <div key={user.userName}>
                     <UserTemplates
+                      onClick={()=>{}}
                       style={{ margin: "12px" }}
                       dimension={45}
-                      userName={user.userName}
-                      uid={user.ffUid}
-                      profile={"/men.png"}
+                      user={{
+                        userName: user.userName,
+                        ffUid: user.ffUid,
+                        profile: "/men.png"
+                      }}
                       alt="x"
                       requestBtn
                       requestFun={friendRequestFunction}

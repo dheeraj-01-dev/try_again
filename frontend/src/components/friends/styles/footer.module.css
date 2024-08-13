@@ -4,6 +4,7 @@
   height: 50px;
   width: 100dvw;
   display: flex;
+  z-index: 2;
   position: fixed;
   padding-top: 10px;
   justify-content: space-around;

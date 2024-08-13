@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
         const key = Object.keys(err.keyValue)[0];
         res.status(400).json({
             success: false,
-            message: `${key} already exist!`,
+            error: `${key} already exist!`,
         });
     }
 };

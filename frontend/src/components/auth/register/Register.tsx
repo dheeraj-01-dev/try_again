@@ -5,13 +5,11 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { setCookie } from 'cookies-next'
 import Link from 'next/link'
-import axios from 'axios'
 import z from 'zod'
 import toast from '@/scripts/toast'
-import { registerUser } from '@/api/user/register'
 import { apiType } from '@/api/types/apiTypes'
 
-const Register = () => {
+const Register = ({registerFunction} :{registerFunction :Function}) => {
   
   const router = useRouter();
   const [phone, setPhone] = useState<string>("")
@@ -47,7 +45,7 @@ const Register = () => {
     };
 
     try {
-      const json :apiType= await registerUser({Name, phone, email, userName, ffUid, password});
+      const json :apiType= await registerFunction({Name, phone, email, userName, ffUid, password});
       if(json.success){
         const user = json.data;
         setCookie("u_state", user);
@@ -55,7 +53,7 @@ const Register = () => {
         router.push("/");
         router.refresh();
       }else{
-        toast(json.error?json.error:json.message)
+        toast(json.error)
       }
     } catch (err:any) {
       toast(err.response?.data.message);

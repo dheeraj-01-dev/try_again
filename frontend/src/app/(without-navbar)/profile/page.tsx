@@ -1,5 +1,5 @@
 "use server"
-import React, { use } from 'react'
+import React from 'react'
 import styles from './page.module.css'
 import Header from '@/components/profile/Header'
 import UserProfile from '@/components/profile/UserProfile'
@@ -8,10 +8,8 @@ import Balance from '@/components/profile/Balance'
 import PersnolInfo from '@/components/profile/PersnolInfo'
 import LoginRequired from '@/components/auth/login/LoginRequired'
 import { cookies } from 'next/headers'
-import jwt, { JwtPayload } from 'jsonwebtoken'
 import getPersonalInfo from '@/api/user/getPersonalInfo'
 import { apiType } from '@/api/types/apiTypes'
-import { emit } from 'process'
 import PasswordAndSecurity from '@/components/profile/PasswordAndSecurity'
 
 interface userInterface {

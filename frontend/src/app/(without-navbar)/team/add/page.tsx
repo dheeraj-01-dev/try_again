@@ -14,7 +14,7 @@ const page = async () => {
   return (
     <div>
       <Titles title="Add members" home={false} />
-      <SelectMembers Friends={json.data?.friend_details} />
+      <SelectMembers Friends={json.data.friend_details} />
     </div>
   );
 };

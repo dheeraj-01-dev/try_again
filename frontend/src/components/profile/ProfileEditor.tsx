@@ -59,13 +59,7 @@ const ProfileEditor = ({
     }
     setUpdatableInputBox(true);
     const i = document.getElementById("focusUpdatableInput");
-    const i2 = document.getElementById("focusUpdatableInput2");
-    if (!i || !i2) {return};
-    i.focus();
-    console.log("KJdfjklaskdj")
-    if(inpName==="Phone"){
-      console.log("phone connsdfj")
-    }
+    i?.focus();
   };
 
   const closeInput = () => {
@@ -182,30 +176,18 @@ const ProfileEditor = ({
             />
             <div style={{ marginLeft: "20px", width: "100%" }}>
               <div style={{ opacity: 0.7 }}>{inpTemplate}</div>
-              {!(inpName==="Phone")&&<textarea
-                onKeyDown={restrictTextareaEnterBtn}
-                rows={1}
-                spellCheck={false}
-                autoComplete="off"
-                id="focusUpdatableInput2"
-                value={inpValue}
-                onChange={updateInpValue}
-                role="number"
-                className={styles.editableInput}
-                placeholder="Type...."
-                maxLength={24}
-              />}{ inpName==="Phone"&&
-                <input type="number" 
-                spellCheck={false}
-                autoComplete="off"
-                id="focusUpdatableInput"
-                value={inpValue}
-                onChange={updateInpValue}
-                role="number"
-                className={styles.editableInput}
-                placeholder="Type...."
-                maxLength={24} />
-              }
+                <input
+                  type={inpName==="Phone"?"number":inpName==="FF Uid"?"number":"text"}
+                  spellCheck={false}
+                  autoComplete="off"
+                  id="focusUpdatableInput"
+                  value={inpValue}
+                  onChange={updateInpValue}
+                  role="number"
+                  className={styles.editableInput}
+                  placeholder="Type...."
+                  maxLength={24}
+                />
             </div>
           </div>
           <div className={styles.updateChangesBtn}>

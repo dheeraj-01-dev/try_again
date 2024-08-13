@@ -1,8 +1,10 @@
+"use server"
 import React from 'react'
 import styles from './page.module.css'
 import NavigateBack from '@/hooks/Navigate.back'
 import Image from 'next/image'
 import Register from '@/components/auth/register/Register'
+import { registerUser } from '@/api/user/register'
 
 const page = () => {
   return (
@@ -12,7 +14,7 @@ const page = () => {
       }}>
         <Image height={20} width={20} src="/icons/arrowLeftWhite.png" alt="Navigate-back" />
       </NavigateBack>
-      <Register />
+      <Register registerFunction={registerUser} />
     </div>
   )
 }
