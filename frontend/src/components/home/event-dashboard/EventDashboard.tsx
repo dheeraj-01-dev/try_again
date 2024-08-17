@@ -81,7 +81,7 @@ const EventDashboard: React.FC = () => {
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleManualScroll("right"),
     onSwipedRight: () => handleManualScroll("left"),
-    preventDefaultTouchmoveEvent: true,
+    preventScrollOnSwipe: true,
     trackMouse: true, // Allow mouse swipe as well
   });
 
@@ -105,8 +105,11 @@ const EventDashboard: React.FC = () => {
       </div>
       <div
         className={styles.posterBoard}
-        ref={scrollRef}
-        {...swipeHandlers} // Add swipe handlers here
+        id="eventDashboardScrollRef"
+        {...swipeHandlers}
+        // ref={scrollRef}
+        // {...swipeHandlers} // Add swipe handlers here
+        // ref={swipeHandlers}
       >
         {posterImages.map((poster, index) => (
           <div
