@@ -10,7 +10,9 @@ import LoginRequired from '@/components/auth/login/LoginRequired'
 import { cookies } from 'next/headers'
 import getPersonalInfo from '@/api/user/getPersonalInfo'
 import { apiType } from '@/api/types/apiTypes'
+import PasswordSecurity from '@/components/profile/PS2'
 import PasswordAndSecurity from '@/components/profile/PasswordAndSecurity'
+// import PasswordSecurity from '@/components/profile/PasswordAndSecurity'
 
 interface userInterface {
   name: string,
@@ -42,7 +44,8 @@ const page = async () => {
         <Balance balance={balance} style={{marginTop: 35}} />
         <MatchQuery style={{marginTop: 20}} />
         <PersnolInfo name={name} ffUid={ffUid} phone={phone} email={email} userName={userName} />
-        <PasswordAndSecurity />
+        {/* <PasswordAndSecurity /> */}
+        <PasswordSecurity />
       </div>
     </LoginRequired>
   )

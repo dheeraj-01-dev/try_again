@@ -3,6 +3,7 @@ import styles from './styles/profile.module.css'
 import Link from 'next/link'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
+import { BellIcon } from '../icons/BellIcon'
 
 const Profile = async () => {
 
@@ -15,6 +16,7 @@ const Profile = async () => {
       <div className={styles.home}>
         <Link href={"/notification"}>
           <Image width={18} height={18} alt="profile" src="/icons/bell.png" />
+          {/* <BellIcon width={20} height={20} fill='#fff' /> */}
         </Link>
       </div>
       <div className={styles.home}>
