@@ -6,6 +6,13 @@
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
+.battleTemplate{
+    font-size: 150%;
+    opacity: 0.5;
+    margin-top: 10px;
+    text-align: center;
+}
+
 @media screen and (max-width: 510px) {
     .battles {
         grid-gap: 12px;

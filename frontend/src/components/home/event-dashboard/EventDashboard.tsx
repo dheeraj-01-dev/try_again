@@ -26,7 +26,7 @@ const EventDashboard: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       scrollToNextImage();
-    }, 3000); // 3 seconds interval
+    }, 5000); // 5 seconds interval
 
     return () => clearInterval(intervalId);
   }, [currentIndex]);

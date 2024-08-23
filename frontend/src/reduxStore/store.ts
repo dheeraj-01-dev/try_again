@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginSlice from "./slices/isLogin/login.slice";
+import socketSlice from "./slices/socket/socket.slice";
 
 export const store = configureStore({
   reducer: {
-    isLogin: loginSlice,
+    socketIo: socketSlice
   }
 });
 

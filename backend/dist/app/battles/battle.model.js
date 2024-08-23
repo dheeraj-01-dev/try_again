@@ -102,10 +102,15 @@ const battleSchema = new Schema({
     },
     teams: [
         {
-            teamId: Schema.ObjectId,
-            participants: [
-                { type: Schema.ObjectId }
-            ]
+            team: Schema.ObjectId,
+            members: [
+                {
+                    type: String,
+                    ref: "users",
+                    required: true
+                }
+            ],
+            _id: false
         }
     ]
 }, { timestamps: true });

@@ -58,7 +58,7 @@
     gap: 10px;
     margin: auto;
     display: flex;
-    padding: 8px 12px;
+    padding: 10px 12px;
     color: #fff;
     font-size: 90%;
     font-weight: 500;
@@ -82,6 +82,7 @@
     display: flex;
     align-items: center;
     height: 4px;
+    margin-top: 3px;
     border-radius: 20px;
     background: var(--brand-brand-blue, #31495E);
     box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.92) inset;
@@ -90,6 +91,7 @@
     width: 60%;
     border-radius: 20px;
     background: linear-gradient(97deg, #C92812 0%, #E44B09 100%);
+    background: linear-gradient(97deg, #ec1e02 0%, #ff6422 100%);
     box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
 }
 

@@ -1,8 +1,9 @@
+
 import type { Metadata } from "next";
 import { Exo_2, Inter, Itim } from "next/font/google";
 import "./globals.css";
-import ConnectToSocketIO from "@/components/ConnectToSocketIO";
-
+import { cookies } from "next/headers";
+import SocketClient from "@/components/SocketClient";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,6 +21,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("i_state")?.value;
+
   return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -30,7 +35,7 @@ export default async function RootLayout({
         <div id="globalToast">
           <div id="toastText">Say me Anything!</div>
         </div>
-        <ConnectToSocketIO />
+        <SocketClient />
       </body>
     </html>
   );

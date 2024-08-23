@@ -1,46 +1,189 @@
-"use client"
-import Image from 'next/image'
-import React, { useState } from 'react'
-import style from './style/BattlePlayerDetails.module.css'
+// "use client";
+// import Image from "next/image";
+// import React, { useState, useRef } from "react";
+// import style from "./style/BattlePlayerDetails.module.css";
+
+// interface TeamType {
+//   team: string;
+//   members: string[];
+// }
+
+// interface BattlePlayerDetailsProps {
+//   teams: TeamType[];
+//   slots: number;
+// }
+
+// const BattlePlayerDetails: React.FC<BattlePlayerDetailsProps> = ({ teams, slots }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [oneTeamIndex, setOneTeamIndex] = useState<number>(-1)
+//   const playerDivRef = useRef<HTMLDivElement>(null);
+//   const imgRef = useRef<HTMLImageElement>(null);
+//   const teamRef = useRef<HTMLDivElement>(null);
+
+//   const togglePlayer = () => {
+//     if (playerDivRef.current && imgRef.current) {
+//       setIsOpen((prev) => !prev);
+
+//       playerDivRef.current.style.height = isOpen
+//         ? "50px"
+//         : `${teams.length * 50 + 370}px`;
+//       imgRef.current.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
+//     }
+//   };
+
+//   const toggleteam = (e :any)=>{
+//     if(!e.target.classList.contains("effectiveTeamToggleClick")){return}
+//     const allTeam :any = document.getElementsByClassName("selectedTeamClassForToggle");
+//     for (let i = 0; i < allTeam.length; i++) {
+//       allTeam[i].style.height = "40px"
+//       if(allTeam[i]===e.currentTarget){
+//         setOneTeamIndex(i)
+//       }
+//     };
+
+//     const sameTeamActive = allTeam[oneTeamIndex]===e.currentTarget
+//     if(!sameTeamActive){
+//         e.currentTarget.style.height = "160px"
+//     }else{
+//       setOneTeamIndex(-1)
+//     }
+//   }
+
+//   return (
+//     <div ref={playerDivRef} className={style.players}>
+//       <div onClick={togglePlayer} className={style["players-banner"]}>
+//         <span>
+//           Teams... &nbsp;{" "}
+//           <span className={style.playerCount}>
+//             ({`${teams.length}/${slots}`})
+//           </span>
+//         </span>
+//         <Image
+//           ref={imgRef}
+//           className={style["players-arrow"]}
+//           width={20}
+//           height={17}
+//           src="/icons/arrowDown.png"
+//           alt="Down"
+//         />
+//       </div>
+//       <div className={style.teams}>
+//         {teams.map((data, index) => (
+//           <div onClick={toggleteam} ref={teamRef} className={`${style.team} selectedTeamClassForToggle`} key={data.team}>
+//             <div className={`${style.teamTemplate} effectiveTeamToggleClick`}>
+//               {index + 1}. &nbsp; &nbsp;{data.team}{" "}
+//               <Image
+//                 width={12}
+//                 height={12}
+//                 src="/icons/singleArrowDown.png"
+//                 alt="arrow"
+//               />
+//             </div>
+//             <div className={style.teamMembers}>
+//               {data.members.map((member, memberIndex) => (
+//                 <div key={member} className={style.teamMember}>
+//                   {memberIndex + 1}. &nbsp; &nbsp;{member}
+//                 </div>
+//               ))}
+//               {data.members.map((member, memberIndex) => (
+//                 <div key={member} className={style.teamMember}>
+//                   {memberIndex + 1}. &nbsp; &nbsp;{member}
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default BattlePlayerDetails;
 
 
-const BattlePlayerDetails = ({teams, slots}: {teams: Array<any>, slots: number}) => {
 
-  const [toggle, setToggle] = useState(false)
+"use client";
+import Image from "next/image";
+import React, { useState, useRef } from "react";
+import style from "./style/BattlePlayerDetails.module.css";
 
-  const togglePlayer = (e: any)=>{
-    const img = document.getElementById("battle-details-player-toggle-img");
-    const playerDiv = document.getElementById("battle-details-player-toggle-div");
-
-    if(!(playerDiv && img)){return};
-    if(toggle){
-      setToggle(false)
-      img.style.transform = "rotate(0deg)"
-      playerDiv.style.height = "50px"
-    }else{
-      setToggle(true)
-      img.style.transform = "rotate(180deg)"
-      playerDiv.style.height = `${teams.length*50+120}px`
-    }
-  }
-
-  return (
-    <div  id="battle-details-player-toggle-div" className={style.players}>
-      <div onClick={togglePlayer} className={style['players-banner']} style={{fontSize: "110%"}}>
-        <span>Teams... &nbsp; <span style={{fontSize: "80%", color: "#009BFF", fontWeight: 700}}>({`${teams.length}/${slots}`})</span></span>
-        <Image id="battle-details-player-toggle-img" className={style['players-arrow']} width={20} height={17} src='/icons/arrowDown.png' alt='Down' />
-      </div>
-      <div className={style.teams} id='battle-details-team-section'>
-        {
-          teams.map( team => (
-            <div key={team.id}>
-              <div className={style.team}>team1 <Image width={12} height={12} src='/icons/singleArrowDown.png' alt='arrow' /></div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  )
+interface TeamType {
+  team: string;
+  members: string[];
 }
 
-export default BattlePlayerDetails
+interface BattlePlayerDetailsProps {
+  teams: TeamType[];
+  slots: number;
+}
+
+const BattlePlayerDetails: React.FC<BattlePlayerDetailsProps> = ({ teams, slots }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [expandedTeamIndex, setExpandedTeamIndex] = useState<number | null>(0);
+  const playerDivRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  const togglePlayer = () => {
+    setIsOpen((prev) => !prev);
+
+    if (playerDivRef.current && imgRef.current) {
+      playerDivRef.current.style.height = isOpen ? "50px" :`${teams.length * 50 + 200 }px`;
+      imgRef.current.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
+    }
+  };
+
+  const toggleTeam = (index: number) => {
+    setExpandedTeamIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
+  return (
+    <div ref={playerDivRef} className={style.players}>
+      <div onClick={togglePlayer} className={style["players-banner"]}>
+        <span>
+          Teams... &nbsp;
+          <span className={style.playerCount}>
+            ({`${teams.length}/${slots}`})
+          </span>
+        </span>
+        <Image
+          ref={imgRef}
+          className={style["players-arrow"]}
+          width={20}
+          height={17}
+          src="/icons/arrowDown.png"
+          alt="Down"
+        />
+      </div>
+      <div className={style.teams}>
+        {teams.map((data, index) => (
+          <div
+            key={data.team}
+            className={`${style.team} ${expandedTeamIndex === index ? style.expanded : ""}`}
+            onClick={() => toggleTeam(index)}
+          >
+            <div className={`${style.teamTemplate} effectiveTeamToggleClick`}>
+              {index + 1}. &nbsp; &nbsp;{data.team}
+              <Image
+                width={12}
+                height={12}
+                src="/icons/singleArrowDown.png"
+                alt="arrow"
+              />
+            </div>
+            {expandedTeamIndex === index && (
+              <div className={style.teamMembers}>
+                {data.members.map((member, memberIndex) => (
+                  <div key={member} className={style.teamMember}>
+                    {memberIndex + 1}. &nbsp; &nbsp;{member}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BattlePlayerDetails;

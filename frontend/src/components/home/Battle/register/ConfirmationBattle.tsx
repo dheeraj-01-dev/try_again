@@ -4,6 +4,7 @@ import styles from "./styles/confirmationBattle.module.css";
 import Image from "next/image";
 import SelectTeam from "./SelectTeam";
 import toast from "@/scripts/toast";
+import { apiType } from "@/api/types/apiTypes";
 
 const teamModeInt: string[] = ["", "Solo", "Duo", "", "Squad"];
 
@@ -14,6 +15,7 @@ const ConfirmationBattle = ({
   battle,
   balance,
   authorization: { userName, ffUid, profile },
+  joinBattle
 }: {
   battleId: string;
   style?: React.CSSProperties;
@@ -34,6 +36,7 @@ const ConfirmationBattle = ({
     ffUid: string | undefined;
     profile: string;
   };
+  joinBattle: (members: string[])=> Promise<apiType>
 }) => {
   const [selectedMembers, setSelectedMembers] = useState(new Set([userName]));
 
@@ -50,6 +53,20 @@ const ConfirmationBattle = ({
       ? setSelectedMembers((data: Set<string>) => new Set(data.add(member)))
       : toast("Selected members reached max !");
   };
+
+  const handleJoinClick = async()=>{
+    if(balance<battle.entry){
+      toast("Insufficient balance !");
+      return;
+    };
+
+    const json :apiType = await joinBattle(memberArray);
+    if(json.data){
+      toast(json.data)
+    }else{
+      toast(json.error)
+    }
+  }
 
   return (
     <div style={style} className={styles.confirmationContainer}>
@@ -118,8 +135,8 @@ const ConfirmationBattle = ({
             <span>Balance</span> &nbsp; {balance - battle.entry} -/
           </div>
         </div>
-        <button disabled className={styles.submitBtn}>
-          Join now
+        <button onClick={handleJoinClick} className={`${styles.submitBtn} ${balance<battle.entry&&styles.disable}`}>
+          {balance>battle.entry?"Join now":"Low balance"}
         </button>
       </div>
     </div>

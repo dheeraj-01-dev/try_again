@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
 const friendsLimit = (val :any)=>{
   return val.length <=200;
@@ -20,6 +20,7 @@ interface schema{
     closeFriends: Schema.Types.ObjectId,
     allFriends: Schema.Types.ObjectId
   },
+  team: Schema.Types.ObjectId,
   upcomingBattles: [Schema.Types.ObjectId],
   password: string,
   createAt: string
@@ -68,7 +69,10 @@ const userSchema = new Schema<schema>({
       validate: [friendsLimit, "max no. of friends reached."]
     }
   },
-  upcomingBattles: [{type: Schema.ObjectId, ref: "battles"}],
+  team: {
+    type: mongoose.Types.ObjectId,
+    ref: "teams"
+  },
   password: {
     type: String,
     required: [true, "please choose a password...."]

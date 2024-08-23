@@ -11,8 +11,6 @@ import { cookies } from 'next/headers'
 import getPersonalInfo from '@/api/user/getPersonalInfo'
 import { apiType } from '@/api/types/apiTypes'
 import PasswordSecurity from '@/components/profile/PS2'
-import PasswordAndSecurity from '@/components/profile/PasswordAndSecurity'
-// import PasswordSecurity from '@/components/profile/PasswordAndSecurity'
 
 interface userInterface {
   name: string,

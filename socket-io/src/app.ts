@@ -20,18 +20,36 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://192.168.23.131:3000",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
 
+
+interface payloadType {
+  auth: string,
+  data: any
+}
+
 io.on("connection", (socket) => {
-  
-  const auth = socket.handshake.auth.token;
-  socket.join(auth);
+
+  console.log("connected one !")
+  socket.on("helo", ()=>{console.log("helo emited from some origin....")})
+
+  socket.on("join", (payload :payloadType)=>{
+    socket.join(payload.auth);
+    console.log("joined to room");
+    
+    socket.to(payload.auth).emit("success", {
+      success: true,
+      data: "joined successfully to " + payload.auth
+    })
+  })
   
 });
 
-server.listen(5400, () => {
-  console.log("listing on port 5400");
+const port = 5400;
+
+server.listen(port, () => {
+  console.log("listing on port "+port);
 });

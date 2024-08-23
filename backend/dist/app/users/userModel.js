@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 const friendsLimit = (val) => {
     return val.length <= 200;
 };
@@ -48,7 +48,10 @@ const userSchema = new Schema({
             validate: [friendsLimit, "max no. of friends reached."]
         }
     },
-    upcomingBattles: [{ type: Schema.ObjectId, ref: "battles" }],
+    team: {
+        type: mongoose.Types.ObjectId,
+        ref: "teams"
+    },
     password: {
         type: String,
         required: [true, "please choose a password...."]

@@ -2,8 +2,24 @@
 import React from "react";
 import styles from "./styles/filter.module.css";
 import Image from "next/image";
+import { socket } from "@/socket";
 
 const FilterBattle = () => {
+
+  socket.on("you", (payload)=>{
+    console.log(payload);
+    alert(payload)
+  })
+
+  socket.on("success", (payload)=>{
+    console.log(payload)
+  })
+  const handleClick = async ()=>{
+    socket.emit("helo", "khuta hai tu")
+  }
+  const handleClick2 = ()=>{
+  }
+  
   return (
     <div className={styles.container}>
       <div className={styles.filterItemBox}>
@@ -11,11 +27,11 @@ const FilterBattle = () => {
           {/* <Image height={11} width={11} alt="u" src="/icons/swords.png" />{" "} */}
           &nbsp; All
         </div>
-        <div className={styles.filterItems}>
+        <div onClick={handleClick} className={styles.filterItems}>
           <Image height={17} width={17} alt="u" src="/icons/game.png" /> &nbsp;
           Battle Royale
         </div>
-        <div className={styles.filterItems}>
+        <div onClick={handleClick2} className={styles.filterItems}>
           <Image height={17} width={17} alt="u" src="/icons/multiplayers.png" />{" "}
           &nbsp; Clash Squad
         </div>

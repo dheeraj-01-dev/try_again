@@ -32,11 +32,9 @@
   border: none;
   padding: 7px 20px;
   border-radius: 6px;
-  background: #1e82aa;
+  background: #00a8eb;
   margin: 10px;
   float: right;
-}.submitBtn:disabled{
-  opacity: 0.5;
 }
 
 
@@ -87,4 +85,8 @@
   font-size: 80%;
   color: #039cd8;
   font-weight: 700;
+}
+
+.disable{
+  opacity: 0.6 !important;
 }

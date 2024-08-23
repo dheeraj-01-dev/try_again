@@ -3,6 +3,7 @@
   height: 50px;
   border-radius: 5px;
   overflow: hidden;
+  max-height: 700px;
   transition: all 0.4s;
   background-color: var(--bg-4);
   /* background: #41c0f3; */
@@ -18,32 +19,70 @@
   margin-right: 30px;
   transition: all 0.4s;
 }
+.playerCount{
+  font-size: 90%;
+  font-weight: 800;
+  color: #009BFF;
+}
 .teams{
   height: 100%;
   overflow: auto;
   margin-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   &&::-webkit-scrollbar {width: 0px;}
 }
-.team{
-  margin:10px 0;
+.teamTemplate{
   display: flex;
   border-radius: 4px;
-  padding: 12px 30px;
+  padding: 0 30px 0 15px;
+  height: 40px;
   align-items: center;
   background-color: #151F27;
   justify-content: space-between;
 }
-.team img{
+.teamTemplate img{
   cursor: pointer;
+  transition: all 0.2s;
 }
+
+.teamMembers{
+  padding-bottom: 10px;
+  margin: 10px 0 10px 30px;
+}
+.teamMember{
+  margin: 5px 0;
+}
+.team{
+  height: 40px;
+  margin: 10px 0;
+  overflow: hidden;
+  border-radius: 7px;
+  background: var(--bg-7);
+  transition: all 0.2s;
+}
+
+
+.expanded{
+  height: 160px;
+  &.players{
+    height: 800px !important;
+  }
+}
+.expanded img{
+  transform: rotate(180deg);
+}
+
+
+
+
+
 
 
 @media screen and (min-width: 510px) {
   .players{
     background-color: #151F27;
   }
-  .team{
+  .teamTemplate{
     background-color: #0b151d;
   }
 }

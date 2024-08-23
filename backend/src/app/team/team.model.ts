@@ -1,5 +1,4 @@
-import { model, Schema } from "mongoose";
-import { string } from "zod";
+import mongoose, { model, Schema } from "mongoose";
 
 const teamSchema = new Schema({
   admin: {
@@ -18,6 +17,19 @@ const teamSchema = new Schema({
       type: String,
       ref: "users",
       required: true
+    }
+  ],
+  upcomingContest: [
+    {
+      battle: mongoose.Schema.ObjectId,
+      members: [
+        {
+          type: String,
+          ref: "users",
+          required: true
+        }
+      ],
+      _id: false
     }
   ]
 });
