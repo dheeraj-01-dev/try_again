@@ -6,7 +6,6 @@ import EmojiPicker from 'emoji-picker-react'
 
 const ChatBox = () => {
   const expandTextarea = (e: any)=>{
-    console.log(e.target.scrollHeight)
         // e.target.style.cssText = 'height:auto; padding: 0';
         // e.target.style.cssText = 'height:' + e.target.scrollHeight + 'px';
         setTimeout(function(){

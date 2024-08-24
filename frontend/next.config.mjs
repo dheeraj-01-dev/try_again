@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    // API_DOMAIN: "http://192.168.113.131:5000"
-    API_DOMAIN: "http://157.10.99.99:5000"
+    server_domain: "http://127.0.0.1:5000", //domain used for backend;
+    communication_domain: "http://127.0.0.1:8080", //domain used for socket io;
   }
 };
 export default nextConfig;

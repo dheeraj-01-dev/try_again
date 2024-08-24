@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Exo_2, Inter, Itim } from "next/font/google";
 import "./globals.css";
 import { cookies } from "next/headers";
-import SocketClient from "@/components/SocketClient";
+import ScoketInitializer from "@/components/SocketInitilizer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,7 +35,7 @@ export default async function RootLayout({
         <div id="globalToast">
           <div id="toastText">Say me Anything!</div>
         </div>
-        <SocketClient />
+        <ScoketInitializer auth={authToken}/>
       </body>
     </html>
   );

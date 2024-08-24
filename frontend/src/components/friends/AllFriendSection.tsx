@@ -7,10 +7,10 @@ import Image from 'next/image'
 const AllFriendSection = ({friends} : {friends: Array<any>}) => {
 
   const foucusTargetFriend =  async (e :any)=>{
-    console.log(e.currentTarget.parentNode.children)
+    
     for (let i = 0; i < e.currentTarget.parentNode.children.length; i++) {
       const elements = e.currentTarget.parentNode.children[i];
-      console.log(elements)
+      
 
       elements.classList.remove(styles.activeBorder);
       elements.children[1].classList.remove(styles.showActionBox);

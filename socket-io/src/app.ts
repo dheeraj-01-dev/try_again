@@ -25,31 +25,25 @@ const io = new Server(server, {
   },
 });
 
-
 interface payloadType {
-  auth: string,
-  data: any
+  auth: string;
+  data: any;
 }
 
 io.on("connection", (socket) => {
+  console.log("connected one !");
+  socket.on("helo", () => {
+    console.log("helo emited from some origin....");
+  });
 
-  console.log("connected one !")
-  socket.on("helo", ()=>{console.log("helo emited from some origin....")})
-
-  socket.on("join", (payload :payloadType)=>{
+  socket.on("join", (payload: payloadType) => {
     socket.join(payload.auth);
     console.log("joined to room");
-    
-    socket.to(payload.auth).emit("success", {
-      success: true,
-      data: "joined successfully to " + payload.auth
-    })
-  })
-  
+  });
 });
 
-const port = 5400;
+const port = 8080;
 
 server.listen(port, () => {
-  console.log("listing on port "+port);
+  console.log("listing on port " + port);
 });

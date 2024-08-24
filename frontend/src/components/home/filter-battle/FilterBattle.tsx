@@ -2,20 +2,10 @@
 import React from "react";
 import styles from "./styles/filter.module.css";
 import Image from "next/image";
-import { socket } from "@/socket";
+
 
 const FilterBattle = () => {
-
-  socket.on("you", (payload)=>{
-    console.log(payload);
-    alert(payload)
-  })
-
-  socket.on("success", (payload)=>{
-    console.log(payload)
-  })
   const handleClick = async ()=>{
-    socket.emit("helo", "khuta hai tu")
   }
   const handleClick2 = ()=>{
   }

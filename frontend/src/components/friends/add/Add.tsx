@@ -43,7 +43,6 @@ const Add = ({auth}: {auth: string | undefined}) => {
 
   const riseRequest = async ({to}: {to: string})=>{
     const json :apiType= await createFriendRequest({auth, to})
-    console.log(json)
     if(json.error){
       toast(json.error)
     }else{

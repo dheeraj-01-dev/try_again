@@ -3,7 +3,7 @@ import axios from "axios"
 import { apiType } from "../types/apiTypes";
 
 
-const domain = process.env.API_DOMAIN;
+const domain = process.env.server_domain;
 
 const registerUser = async ({Name, ffUid, userName, phone, email, password}: {
   phone: string,

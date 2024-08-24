@@ -1,5 +1,5 @@
 import axios from "axios";
-const domain = process.env.API_DOMAIN;
+const domain = process.env.server_domain;
 
 const getSampleUsers = async () => {
   try {

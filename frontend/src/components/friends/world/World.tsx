@@ -41,7 +41,6 @@ const World = ({
       setUsers();
       setUserNotFound(true);
     }
-    console.log(users);
     e.target.children[1].blur();
   };
 

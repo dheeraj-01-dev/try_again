@@ -1,6 +1,6 @@
 import axios from "axios";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
-const domain = process.env.API_DOMAIN;
+const domain = process.env.server_domain;
 
 const getAllNotifications = async ({Authorization}: {Authorization: string | RequestCookie | undefined}) => {
   console.log(Authorization)

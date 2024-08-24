@@ -1,6 +1,6 @@
 "use server"
 import axios from "axios";
-const domain = process.env.API_DOMAIN;
+const domain = process.env.server_domain;
 
 const createTeam = async ({ authorization, teamMembers, teamName } :{authorization: string, teamMembers: Array<string>, teamName :string}) => {
   try {

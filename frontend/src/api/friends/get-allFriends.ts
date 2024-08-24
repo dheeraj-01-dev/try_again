@@ -1,7 +1,7 @@
 import axios from "axios";
-import { string } from "zod";
 import { apiType } from "../types/apiTypes";
-const domain = process.env.API_DOMAIN;
+
+const domain = process.env.server_domain;
 
 const getallFriends = async ({auth}: {auth: string | undefined}) => {
   if(typeof auth !== "string"){

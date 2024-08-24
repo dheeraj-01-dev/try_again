@@ -2,4 +2,6 @@
 
 import { io } from "socket.io-client";
 
-export const socket = io();
+const domain = process.env.communication_domain;
+
+export const socket = io(`${domain}`);
