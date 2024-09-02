@@ -29,16 +29,13 @@
 }
 
 .contestPageContainer{
-  height: 100%;
-  display: flex;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  flex-direction: row;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  height: calc(100dvh - 150px);
+  overflow: auto;
+  margin-top: 20px;
+  
 }
 .contestPages{
-  height: 100%;
   min-width: 100%;
+  padding-bottom: 40px;
   scroll-snap-align: start;
 }

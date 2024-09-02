@@ -1,7 +1,6 @@
 .profileContainer{
   display: flex;
   align-items: flex-end;
-  height: 24px;
   margin-right: 10px;
 }
 .home{
@@ -19,4 +18,19 @@
   margin-right: 10px;
   color: rgb(0, 179, 255);
   text-decoration: underline;
+}
+
+.bellIcon{
+  width: 18px;
+  display: flex;
+  align-items: flex-start;
+}
+.redDot{
+  position: relative;
+  right: 4px;
+  top: -1px;
+}
+
+.a{
+  display: flex;
 }

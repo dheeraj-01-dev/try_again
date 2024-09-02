@@ -4,6 +4,7 @@ import { Exo_2, Inter, Itim } from "next/font/google";
 import "./globals.css";
 import { cookies } from "next/headers";
 import ScoketInitializer from "@/components/SocketInitilizer";
+import { socket } from "@/socket";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +25,7 @@ export default async function RootLayout({
 
   const cookieStore = cookies();
   const authToken = cookieStore.get("i_state")?.value;
-
+  
   return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />

@@ -1,49 +1,15 @@
-import express from "express";
-import { createServer } from "node:http";
-import { Server } from "socket.io";
-import cors from "cors";
+import { io } from "./server.js";
+import { welcome } from "./app/events/welcome.js";
+import { joinToRoom } from "./app/events/joinToRoom.js";
+import { Socket } from "socket.io";
 
-const app = express();
-app.use(
-  cors({
-    origin: "*", // Allow requests from any origin
-    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
-  })
-);
+io.on("connection", (socket: Socket) => {
 
-app.get("/", (req, res) => {
-  res.json({
-    id: 121,
-  });
-});
-const server = createServer(app);
-
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
-
-interface payloadType {
-  auth: string;
-  data: any;
-}
-
-io.on("connection", (socket) => {
-  console.log("connected one !");
-  socket.on("helo", () => {
-    console.log("helo emited from some origin....");
+  
+  socket.on("dis", async (payload) => {
+    await socket.leave(payload);
   });
 
-  socket.on("join", (payload: payloadType) => {
-    socket.join(payload.auth);
-    console.log("joined to room");
-  });
-});
-
-const port = 8080;
-
-server.listen(port, () => {
-  console.log("listing on port " + port);
+  socket.on("welcome", welcome(socket));
+  socket.on("joinToRoom", joinToRoom(socket));
 });

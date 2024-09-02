@@ -6,6 +6,7 @@ import { teamModel } from "../team/team.model.js";
 import { userModel } from "../users/userModel.js";
 
 export const getAllBattles = async (req: Request, res: Response)=>{
+  
   try {
     // const battle = await battleModel.find();
     const battle = await battleModel.aggregate([
@@ -77,11 +78,11 @@ export const joinBattle_C = async (req: Request, res: Response) => {
 
   try {
     const battleup = await battleModel.updateOne({ _id: battle }, {
-      $addToSet: { teams: { team, members } }
+      $addToSet: { teams: { team, leader: authorization, members } }
     }, {session, raw: false});
 
     const teamup = await teamModel.updateOne({ _id: team }, {
-      $addToSet: { upcomingContest: { battle, members }}
+      $addToSet: { upcomingContest: { battle, leader: authorization, members }}
     }, {session, raw: false});
     
     await userModel.updateOne({ userName: authorization }, {
@@ -110,35 +111,36 @@ export const joinBattle_C = async (req: Request, res: Response) => {
 export const getRegisteredBattle_C = async (req: Request, res: Response) => {
   const { authorization } = req.headers;
 
-  if(!authorization){return};
+  if(!authorization){return};  
 
   try {
-    const data = await userModel.aggregate([
+    const data = await battleModel.aggregate([
       {
         '$match': {
-          'userName': authorization
+          '$or': [
+            {
+              'teams.members': 'dheeraj.mafia'
+            }, {
+              'teams.leader': 'dheeraj.mafia'
+            }
+          ]
         }
       }, {
         '$lookup': {
           'from': 'teams', 
-          'localField': 'team', 
+          'localField': 'teams.team', 
           'foreignField': '_id', 
           'as': 'teamDetails'
         }
       }, {
-        '$project': {
-          'teamDetails': 1
-        }
+        '$unset': 'teamDetails.upcomingContest'
       }
     ]);
-  
-    const requiredData = data[0].teamDetails[0].upcomingContest.filter(({members}:{members: string[]})=>{
-      return members.includes(authorization)
-    })
+    
 
     res.status(200).json({
       success: true,
-      data: requiredData
+      data
     })
   } catch (err) {
     res.status(400).json({

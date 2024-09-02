@@ -1,9 +1,10 @@
+import NotFoundPage from '@/components/hooks/404'
 import React from 'react'
 
 const notFound = () => {
   return (
     <div>
-      missing path?
+      <NotFoundPage />
     </div>
   )
 }

@@ -47,6 +47,21 @@ const joinBattle = async ({battle, team, members, Authorization}: {
   } catch (err: any) {
     return err.response.data
   }
+};
+
+const fetchUpcomingBattles = async ( authorization: string | undefined ) => { 
+  try {
+    const json = await axios({
+      method: "GET",
+      url: `${domain}/battle/get/upcoming`,
+      headers: {
+        Authorization: authorization
+      }
+    });
+    return json.data;
+  } catch (err:any) {
+    return err.response.data
+  }
 }
 
-export { fetchAllBattles, fetchSingleBattle, joinBattle }
+export { fetchAllBattles, fetchSingleBattle, joinBattle, fetchUpcomingBattles }

@@ -3,10 +3,25 @@ import Link from "next/link";
 import React from "react";
 import styles from "./styles/allFriends.module.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const AllFriends = ({ friends }: { friends: Array<any> }) => {
-  const foucusTargetFriend = async (e: any) => {};
 
+const AllFriends = ({ 
+  friends,
+  createToken
+}: { 
+  friends: Array<any>,
+  createToken: (member: string) => Promise<string>
+}) => {
+  
+  const router = useRouter();
+
+    const openAlternativeChat = async (name: string) => {
+      const token =await createToken(name);
+      
+      router.push(`/conversation/direct/${token}`)
+    };
+  
   return (
     <div>
       {friends.length < 0 ? (
@@ -17,7 +32,7 @@ const AllFriends = ({ friends }: { friends: Array<any> }) => {
         <div>
           {friends.map((obj) => (
             <div
-              onClick={foucusTargetFriend}
+              onClick={()=>{openAlternativeChat(obj.userName)}}
               key={obj.userName}
               className={styles.friendBox}
             >

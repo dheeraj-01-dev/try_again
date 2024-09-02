@@ -2,11 +2,14 @@ import React from "react";
 import BattleCard from "./BattleCard";
 import style from "./style/Battles.module.css"
 import { fetchAllBattles } from "@/api/battle/battles";
+import { useAppDispatch, useAppSelector } from "@/hooks/hook";
+import { setBattle } from "@/reduxStore/slices/battle/battle.slice";
+import { useDispatch } from "react-redux";
 
 const Battles = async () => {
   const json = await fetchAllBattles();
   const battles = json.battle;
-  
+
   return (
     <div className={style.battles}>
       {battles?.map((obj:any)=>{return <BattleCard key={obj._id} battle={obj} />})}

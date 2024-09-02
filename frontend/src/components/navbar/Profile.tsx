@@ -14,13 +14,14 @@ const Profile = async () => {
     isLogin?
     <div className={styles.profileContainer}>
       <div className={styles.home}>
-        <Link href={"/notification"}>
+        <Link href={"/notification"} className={styles.bellIcon}>
           <Image width={18} height={18} alt="profile" src="/icons/bell.png" />
+          <Image className={styles.redDot} width={5} height={5} alt="profile" src="/icons/square.png" />
           {/* <BellIcon width={20} height={20} fill='#fff' /> */}
         </Link>
       </div>
       <div className={styles.home}>
-        <Link href={"/support"}>
+        <Link href={"/support"} className={styles.a}>
           <Image width={18} height={18} alt="profile" src="/icons/headset.png" />
         </Link>
       </div>

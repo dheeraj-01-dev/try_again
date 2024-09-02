@@ -102,7 +102,15 @@ const battleSchema = new Schema({
     },
     teams: [
         {
-            team: Schema.ObjectId,
+            team: {
+                type: Schema.ObjectId,
+                required: true,
+                ref: "teams"
+            },
+            leader: {
+                type: String,
+                required: true
+            },
             members: [
                 {
                     type: String,

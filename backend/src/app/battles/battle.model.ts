@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 
 interface team{
   teamId: string,
+  leader: string,
   participants: Array<string>
 }
 
@@ -138,7 +139,15 @@ const battleSchema = new Schema<schema>({
   },
   teams: [
     {
-      team: Schema.ObjectId,
+      team: {
+        type: Schema.ObjectId,
+        required: true,
+        ref: "teams"
+      },
+      leader: {
+        type: String,
+        required: true
+      },
       members: [
         { 
           type: String,

@@ -6,6 +6,7 @@ import FilterBattle from '@/components/home/filter-battle/FilterBattle'
 import EventDashboard from '@/components/home/event-dashboard/EventDashboard'
 import Battles from '@/components/home/Battle/Battles'
 import Loading from '@/components/Loading'
+import StoreProvider from '@/reduxStore/Storeprovier'
 
 const page = async () => {
   return (

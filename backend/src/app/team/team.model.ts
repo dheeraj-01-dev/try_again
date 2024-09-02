@@ -22,6 +22,10 @@ const teamSchema = new Schema({
   upcomingContest: [
     {
       battle: mongoose.Schema.ObjectId,
+      leader: {
+        type: String,
+        required: true,
+      },
       members: [
         {
           type: String,
