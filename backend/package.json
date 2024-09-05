@@ -11,6 +11,7 @@
   "author": "Dheeraj Thakur",
   "license": "ISC",
   "dependencies": {
+    "@vonage/server-sdk": "^3.17.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

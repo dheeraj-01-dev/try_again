@@ -6,6 +6,7 @@ config();
 import cors from 'cors';
 import notificatonRouter from './app/notification/notification.routes.js';
 import teamRouter from './app/team/team.routes.js';
+import { orderRouter } from './app/orders/order.routes.js';
 const app = express();
 app.use(cors());
 app.use(express.json({
@@ -23,6 +24,7 @@ app.use("/user", userRouter);
 app.use("/battle", battleRouter);
 app.use("/notification", notificatonRouter);
 app.use("/team", teamRouter);
+app.use("/order", orderRouter);
 app.all('*', (req, res) => {
     res.status(404).json({
         success: false,
