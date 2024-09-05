@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import styles from "./styles/ps2.module.css";
 import Image from "next/image";
 
-const PasswordSecurity: React.FC = () => {
+interface passwordSecurityProps {
+  style ?: React.CSSProperties;
+}
+
+const PasswordSecurity: React.FC<passwordSecurityProps> = ({style}) => {
   // State for managing passwords
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -61,7 +65,7 @@ const PasswordSecurity: React.FC = () => {
   };
 
   return (
-    <div className={styles.passwordSecurity}>
+    <div style={style} className={styles.passwordSecurity}>
       <h2 className={styles.title}>Password & Security</h2>
         <div className={styles.coloredSection}>
 

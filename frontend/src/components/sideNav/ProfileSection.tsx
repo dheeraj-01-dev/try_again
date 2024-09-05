@@ -15,11 +15,11 @@ const ProfileSection = () => {
     <div className={styles.profile}>
       {decodedUser?<Link href="/profile" className={styles.linkContainer}>
         <div className={styles.profilePic}>
-          <Image height={60} width={60} alt='' unoptimized src="/men.png" />
+          <Image height={60} width={60} alt='' unoptimized src="/temp-profile.png" />
           {/* <img src="/men.png" alt="" /> */}
         </div>
         <div className={styles.identity}>
-          <div className={styles.name}>{name}</div>
+          <div className={styles.name}>{"UN-DEFE4TED"}</div>
           <div className={styles.uid}>{ffUid}</div>
         </div>
       </Link>:<div className={styles.loginContainer}>

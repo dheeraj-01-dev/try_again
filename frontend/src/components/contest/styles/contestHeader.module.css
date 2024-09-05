@@ -20,7 +20,7 @@
   width: calc(50dvw - 30px);
   margin: 0 3%;
   position: absolute;
-  transition: all 0.4s;
+  transition: all 0.5s;
   border-radius: 10px;
   background-color: #a9a9a9;
 }
@@ -38,4 +38,23 @@
   min-width: 100%;
   padding-bottom: 40px;
   scroll-snap-align: start;
+}
+
+.contest{
+  margin-top: 20px;
+  display: flex;
+  width: calc(100dvw - 24px);
+}
+.upcoming{
+  min-width: calc(100dvw - 24px);
+  height: 75dvh;
+  transition: all 0.5s;
+  margin-right: 24px;
+}
+.upcomingPage{
+  margin-left: -100dvw;
+}
+.completed{
+  min-width: calc(100dvw - 24px);
+  height: 75dvh;
 }

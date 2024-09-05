@@ -6,6 +6,7 @@ import Teams from '@/components/friends/teams/Teams'
 import getTeams from '@/api/team/getTeam'
 import { cookies } from 'next/headers'
 import { apiType } from '@/api/types/apiTypes'
+import ComingSoon from '@/components/temp/ComingSoon'
 
 const page = async () => {
   const cookiStore = cookies();
@@ -14,7 +15,8 @@ const page = async () => {
   return (
     <div>
       <Header teams={json}/>
-      <Teams teams={json} />
+      {/* <Teams teams={json} /> */}
+      <ComingSoon />
     </div>
   )
 }

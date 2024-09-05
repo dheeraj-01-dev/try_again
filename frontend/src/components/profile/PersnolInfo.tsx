@@ -125,9 +125,10 @@ interface PersonalInfoProps {
   phone: number;
   email: string;
   userName: string;
+  style ?: React.CSSProperties;
 }
 
-const PersonalInfo: React.FC<PersonalInfoProps> = ({ name, ffUid, phone, email, userName }) => {
+const PersonalInfo: React.FC<PersonalInfoProps> = ({ name, ffUid, phone, email, userName, style }) => {
   const [editorOpen, setEditorOpen] = useState(false);
 
   const profile = { name, ffUid, phone, email, userName };
@@ -146,7 +147,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ name, ffUid, phone, email, 
   ];
 
   return (
-    <>
+    <div style={style}>
       <div className={styles.infoLabel}>
         Personal Information
         <Image
@@ -176,7 +177,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ name, ffUid, phone, email, 
         editor={editorOpen}
         closeEditor={toggleEditor}
       />
-    </>
+    </div>
   );
 };
 

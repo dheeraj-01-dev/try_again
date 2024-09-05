@@ -1,42 +1,39 @@
 .profileSection{
   display: flex;
+  padding-left: 20px;
+  justify-content: space-between;
+}
+.profileSection img{
+  opacity: 0.9;
 }
 
 .profilePic{
   border-radius: 100%;
   object-fit: cover;
-}
-.name{
-  font-size: 170%;
-  letter-spacing: 1px;
 }.uid{
-  font-size: 70%;
-  letter-spacing: 1px;
-  color: #65b3b5;
+  font-size: 65%;
+  opacity: 0.8;
+  margin-top: 2px;
   font-weight: 700;
+  letter-spacing: 0.5px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}.exp{
+  text-align: center;
+  font-size: 60%;
 }
 
 .infoContainer{
   margin-left: 20px;
-  width: calc(100dvw - 150px);
+  margin-top: -4px;
   display: flex;
-  /* background: red; */
-  margin-top: -10px;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.editSection{
+
+.likes{
   display: flex;
-  justify-content: space-between;
-}
-.editSection button{
-  background: none;
-  border: 2px solid var(--bg-1);
-  padding: 3px 15px;
-  border-radius: 4px;
-}
-.editProfileBtn{
-  width: calc(100% - 60px);
+  align-items: center;
+  height: 40px;
+  margin-right: 27px;
 }

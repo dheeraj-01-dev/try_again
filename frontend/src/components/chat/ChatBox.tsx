@@ -231,7 +231,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ members, auth }) => {
   return (
     <div ref={chatBox} className={styles.chatBox}>
       <div ref={chatsRef} className={styles.chats}>
-        {/* Initial Chats */}
+        {/* Initial Chats */} 
         <div className={styles.incomingChat}>
           <div className={styles.chat}>Sample incoming message 1</div>
           <div className={styles.chat}>Sample incoming message 2</div>

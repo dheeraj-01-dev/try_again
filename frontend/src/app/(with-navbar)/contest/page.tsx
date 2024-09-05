@@ -6,6 +6,7 @@ import ContestHeader from "@/components/contest/ContestHeader";
 import Upcoming from "@/components/contest/Upcoming";
 import { cookies } from "next/headers";
 import React from "react";
+import styles from './page.module.css'
 
 const page = async () => {
   const cookieStore = cookies();
@@ -14,7 +15,7 @@ const page = async () => {
   const json :apiType = await fetchUpcomingBattles(u_n_state);
   
   return (
-    <div>
+    <div className={styles.contest}>
       <ContestHeader
         upcomingBattle={Upcoming({upcomingBattle: json.data})}
         completedBattle={Completed()}

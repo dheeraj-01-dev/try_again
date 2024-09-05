@@ -11,6 +11,7 @@ import { cookies } from 'next/headers'
 import getPersonalInfo from '@/api/user/getPersonalInfo'
 import { apiType } from '@/api/types/apiTypes'
 import PasswordSecurity from '@/components/profile/PS2'
+import SocialMedia from '@/components/profile/SocialMedia'
 
 interface userInterface {
   name: string,
@@ -39,11 +40,12 @@ const page = async () => {
       <div className={styles.profile}>
         <Header userName={userName}/>
         <UserProfile style={{marginTop: 20}} name={name} uid={ffUid} />
+        {/* <SocialMedia /> */}
         <Balance balance={balance} style={{marginTop: 35}} />
-        <MatchQuery style={{marginTop: 20}} />
-        <PersnolInfo name={name} ffUid={ffUid} phone={phone} email={email} userName={userName} />
+        <MatchQuery style={{marginTop: 25}} />
+        <PersnolInfo style={{marginTop: 35}} name={name} ffUid={ffUid} phone={phone} email={email} userName={userName} />
         {/* <PasswordAndSecurity /> */}
-        <PasswordSecurity />
+        <PasswordSecurity style={{marginTop: 35}} />
       </div>
     </LoginRequired>
   )
