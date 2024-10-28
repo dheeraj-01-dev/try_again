@@ -26,19 +26,17 @@ export const joinBattle_V = async (req: Request, res: Response, next: NextFuncti
       error: "not authorized"
     })
   }
-  const { battle, team, members } = req.body;
+  const { battle, members } = req.body;
   console.log(battle)
 
   const schema = z.object({
     battle: z.instanceof(mongoose.Types.ObjectId),
-    team: z.instanceof(mongoose.Types.ObjectId),
     members: z.array(z.string()).min(1).max(4)
   });
 
   try {
     const validSchema = schema.safeParse({
       battle: new mongoose.Types.ObjectId(battle),
-      team: new mongoose.Types.ObjectId(team),
       members
     });
 

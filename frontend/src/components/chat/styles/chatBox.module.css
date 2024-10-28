@@ -1,11 +1,25 @@
-.chatBox{
-  overflow: hidden;
+.test{
+  display: none;
+  height: 300px;
+  margin-bottom: 40px;
+  background: cornflowerblue;
+  overflow: scroll;
 }
-.chats{
-  display: flex;
-  flex-direction: column;
+.chatBox{
+  /* overflow: hidden; */
+  height: calc(100dvh - 57px);
   overflow: auto;
 }
+.chats{
+  /* background: cornflowerblue; */
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  
+  /* justify-content: end; */
+  height: calc(100dvh - 107px);
+}
+
 .chat{
   border-radius: 10px;
   padding: 7px 15px;
@@ -26,6 +40,7 @@
   width: max-content;
   background: rgb(204, 56, 2);
   background: #159;
+  white-space: pre-wrap;
   &:last-child{
     border-radius: 10px 10px 0 10px;
   }
@@ -35,6 +50,7 @@
   margin-bottom: 4px;
   width: max-content;
   background: var(--bg-5);
+  white-space: pre-wrap;
   &:last-child{
     border-radius: 10px 10px 10px 0;
   }

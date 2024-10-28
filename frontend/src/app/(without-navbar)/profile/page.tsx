@@ -34,18 +34,23 @@ const page = async () => {
       </div>
     )
   };
-  const { balance, name, ffUid, email, _id, userName, phone } = json.data;
+  const { balance, name, ffUid, email, profile, _id, userName, phone } = json.data;
   return (
     <LoginRequired>
       <div className={styles.profile}>
         <Header userName={userName}/>
-        <UserProfile style={{marginTop: 20}} name={name} uid={ffUid} />
-        {/* <SocialMedia /> */}
-        <Balance balance={balance} style={{marginTop: 35}} />
-        <MatchQuery style={{marginTop: 25}} />
-        <PersnolInfo style={{marginTop: 35}} name={name} ffUid={ffUid} phone={phone} email={email} userName={userName} />
-        {/* <PasswordAndSecurity /> */}
-        <PasswordSecurity style={{marginTop: 35}} />
+        <div className={styles.section1}>
+          <UserProfile style={{marginTop: 20}} name={name} uid={ffUid} profile={profile} />
+          {/* <SocialMedia /> */}
+          <Balance balance={balance} style={{marginTop: 35}} />
+        </div>
+        <div className={styles.section2}>
+            {/* <MatchQuery style={{marginTop: 25}} /> */}
+            <PersnolInfo style={{marginTop: 35}} name={name} ffUid={ffUid} phone={phone} email={email} userName={userName} />
+
+          {/* <PasswordAndSecurity /> */}
+        </div>
+          <PasswordSecurity style={{marginTop: 35}} />
       </div>
     </LoginRequired>
   )

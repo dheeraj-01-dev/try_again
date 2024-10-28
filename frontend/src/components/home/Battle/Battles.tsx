@@ -1,22 +1,32 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import BattleCard from "./BattleCard";
 import style from "./style/Battles.module.css"
-import { fetchAllBattles } from "@/api/battle/battles";
-import { useAppDispatch, useAppSelector } from "@/hooks/hook";
-import { setBattle } from "@/reduxStore/slices/battle/battle.slice";
-import { useDispatch } from "react-redux";
+import BCZ from "./BCZ";
+import FilterBattle from "../filter-battle/FilterBattle";
 
-const Battles = async () => {
-  const json = await fetchAllBattles();
-  const battles = json.battle;
+const Battles = ({
+  battles
+}: {
+  battles: any[]
+}) => {
+
+  const [filterdBattle, setFilterdBattle] = useState(battles);
 
   return (
-    <div className={style.battles}>
-      {battles?.map((obj:any)=>{return <BattleCard key={obj._id} battle={obj} />})}
-      {/* {!json[0].test&&json.map((obj)=>{return <BattleCard key={obj._id.$oid} battle={obj} />})} */}
-      {!battles&&<div className={style.battleTemplate} >
-        Battle Cooming Soon !
-      </div>}
+    <div style={{height: "70%"}}>
+      <FilterBattle setFilterdBattle={setFilterdBattle} battles={battles} />
+      <div className={style.battles}>
+        {/* {battles?.map((obj:any)=>{return <BattleCard key={obj._id} battle={obj} />})} */}
+        {filterdBattle?.map((obj:any)=>{return <BCZ key={obj._id} battle={obj} />})}
+        {/* {!json[0].test&&json.map((obj)=>{return <BattleCard key={obj._id.$oid} battle={obj} />})} */}
+        {!filterdBattle&&<div className={style.battleTemplate} >
+          Battle Cooming Soon !
+        </div>}
+      </div>
+        {filterdBattle.length<1&&<div className={style.battleTemplate} >
+          Battle Cooming Soon !
+        </div>}
     </div>
   );
 };

@@ -1,132 +1,3 @@
-// "use client";
-// import React, { useEffect, useRef, useState } from "react";
-// import styles from "./styles/chatBox.module.css";
-// import Image from "next/image";
-// import { socket } from "@/socket";
-
-// const ChatBox = ({
-//   members,
-//   auth,
-// }: {
-//   members: string[];
-//   auth: string | undefined;
-// }) => {
-//   const [input, setInput] = useState<string>()
-//   const textarea = useRef<HTMLTextAreaElement>(null);
-//   const chats = useRef<HTMLDivElement>(null)
-
-//   const submitHandle = () => {
-//     textarea.current?.focus();
-
-//     const lastChild :any = chats.current?.lastChild;
-//     if(lastChild?.classList.value.startsWith("chatBox_outgoingChat")){
-//       const div = document.createElement("div");
-//       if(!input){return}
-//       div.classList.add(styles.chat)
-//       div.innerHTML = input;
-  
-//       chats.current?.lastChild?.appendChild(div)
-//     }else{
-//       const lastChild = document.createElement("div");
-//       lastChild.classList.add(styles.outgoingChat);
-
-//       const div = document.createElement("div");
-//       if(!input){return}
-//       div.classList.add(styles.chat)
-//       div.innerHTML = input;
-
-//       lastChild.append(div)
-  
-//       chats.current?.append(lastChild);
-
-//     }
-
-//     setInput("")
-
-//     console.log(chats.current)
-//   };
-//   useEffect(() => {
-//     socket.emit("joinToRoom", {
-//       type: "directConversation",
-//       members: "dheeraj.mafia,khutta.mafia",
-//       auth,
-//     });
-
-//     return () => {
-//       socket.off("message");
-//       socket.emit("dis", "dheeraj.mafia,khutta.mafia");
-//     };
-//   }, [socket]);
-
-//   socket.on("message", (payload) => {
-//     console.log(payload);
-//   });
-
-//   const expandTextarea = (e: any) => {
-//     // e.target.style.cssText = 'height:auto; padding: 0';
-//     // e.target.style.cssText = 'height:' + e.target.scrollHeight + 'px';
-//     setTimeout(function () {
-//       e.target.style.cssText = "height:auto; padding:0";
-//       // for box-sizing other than "content-box" use:
-//       // e.target.style.cssText = '-moz-box-sizing:content-box';
-//       if (e.target.scrollHeight < 115) {
-//         e.target.style.cssText = "height:" + e.target.scrollHeight + "px";
-//       } else {
-//         e.target.style.cssText = "height: 96px; padding: 0";
-//       }
-//     }, 0);
-//   };
-
-//   return (
-//     <div className={styles.chatBox}>
-//       <div ref={chats} className={styles.chats}>
-//         <div className={styles.incomingChat}>
-//           <div className={styles.chat}>he asdlkfj</div>
-//           <div className={styles.chat}>he asdlkfsdfas sadfa </div>
-//           <div className={styles.chat}>he asdlkfj kj kapar sdkf sdfbcjvue wucbdjshufds</div>
-//         </div>
-//         <div className={styles.outgoingChat}>
-//           <div className={styles.chat}>ki re babu kate maun laglao hi hi hi</div>
-//           <div className={styles.chat}>ki re babu kate maun laglao hi hi hi</div>
-//         </div>
-//       </div>
-
-//       <div className={styles.inputArea}>
-//         <div className={styles.inputBox}>
-//           <textarea
-//             onInput={expandTextarea}
-//             value={input}
-//             onChange={(e)=>{setInput(e.target.value)}}
-//             ref={textarea}
-//             rows={1}
-//             id="textarea"
-//             autoCorrect="off"
-//             spellCheck={false}
-//             name="input"
-//             className={styles.input}
-//             placeholder="Type...."
-//           ></textarea>
-//         </div>
-//         <div className={styles.sendBtn}>
-//           <Image
-//             onClick={submitHandle}
-//             height={20}
-//             width={20}
-//             alt=""
-//             src="/icons/send.png"
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ChatBox;
-
-
-
-
-
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
@@ -184,11 +55,34 @@ const ChatBox: React.FC<ChatBoxProps> = ({ members, auth }) => {
     []
   );
 
-  const handleSubmit = () => {
-    textareaRef.current?.focus();
-    addChatMessage(input, true);
-    setInput("");
+  function scrollToBottom() {
+    if(chatsRef.current)
+    chatsRef.current.scrollTop = chatsRef.current.scrollHeight;
   };
+
+
+  const setChatBoxAccordingInputArea = (scrollHeight :number)=>{
+    const updatedHeight = window.visualViewport?.height;
+    if(!(chatBox.current&&box.current&&originalHeight&&updatedHeight&&chatsRef.current)){return}
+    chatsRef.current.style.marginTop = `-${scrollHeight-20}px`;
+    // chatsRef.current.style.height = `calc(${updatedHeight - scrollHeight - 50}px)`;
+    scrollToBottom()
+  };
+
+  const handleSubmit = () => {
+    if(textareaRef.current){  
+      textareaRef.current?.focus();
+      addChatMessage(input.trim(), true);
+      setInput("");
+      scrollToBottom();
+      // setChatBoxAccordingInputArea(0);
+      textareaRef.current.style.height = "auto"
+    }
+    if(chatsRef.current)chatsRef.current.style.marginTop = "0px"
+  };
+
+
+
   useEffect(() => {
     const viewPort = window.visualViewport?.height;
     originalHeight = viewPort;
@@ -198,8 +92,11 @@ const ChatBox: React.FC<ChatBoxProps> = ({ members, auth }) => {
   useEffect(() => {
 
     window.addEventListener("resize", (e :any)=>{
+      
       const updatedHeight = window.visualViewport?.height;
       if(!(chatBox.current&&box.current&&originalHeight&&updatedHeight&&chatsRef.current)){return}
+      
+      chatsRef.current.style.overflowX = "overflow"
       box.current.style.bottom = `${originalHeight-updatedHeight+10}px`;
       chatsRef.current.style.height = `calc(${updatedHeight - 105}px)`;
       chatBox.current.style.height = `calc(${updatedHeight - 60}px)`;
@@ -216,21 +113,29 @@ const ChatBox: React.FC<ChatBoxProps> = ({ members, auth }) => {
 
     socket.on("message", handleIncomingMessage);
 
+    scrollToBottom()
     return () => {
       socket.off("message", handleIncomingMessage);
       socket.emit("dis", members.join(","));
     };
   }, [addChatMessage]);
 
+
+
   const expandTextarea = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.target.style.height = "auto";
     const scrollHeight = e.target.scrollHeight;
     e.target.style.height = scrollHeight < 115 ? `${scrollHeight}px` : "96px";
+    if(scrollHeight<115){
+      setChatBoxAccordingInputArea(scrollHeight)
+    }
   }, []);
 
   return (
     <div ref={chatBox} className={styles.chatBox}>
+      <div className={styles.test}>lorem500</div>
       <div ref={chatsRef} className={styles.chats}>
+        <div style={{flexGrow: 1}}></div>
         {/* Initial Chats */} 
         <div className={styles.incomingChat}>
           <div className={styles.chat}>Sample incoming message 1</div>
@@ -239,6 +144,11 @@ const ChatBox: React.FC<ChatBoxProps> = ({ members, auth }) => {
         </div>
         <div className={styles.outgoingChat}>
           <div className={styles.chat}>Sample outgoing message 1</div>
+          <div className={styles.chat}>Sample outgoing message 2</div>
+          <div className={styles.chat}>Sample outgoing message 2</div>
+          <div className={styles.chat}>Sample outgoing message 2</div>
+          <div className={styles.chat}>Sample outgoing message 2</div>
+          <div className={styles.chat}>Sample outgoing message 2</div>
           <div className={styles.chat}>Sample outgoing message 2</div>
         </div>
       </div>

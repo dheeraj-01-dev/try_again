@@ -3,6 +3,7 @@
   background: var(--bg-7);
   border-radius: 7px;
   padding: 10px;
+  height: fit-content;
 }
 .queryTitle{
   padding: 0 20px 15px 20px;

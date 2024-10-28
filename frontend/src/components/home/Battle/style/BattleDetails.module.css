@@ -106,8 +106,8 @@
     /* height: calc(100vh - 70px); */
   }.arrow-back{
     scale: 1;
-    top: 130px;
-    left: 300px;
+    top: 50px;
+    left: 50px;
   }.img{
     border-radius: 10px;
   }.img img{

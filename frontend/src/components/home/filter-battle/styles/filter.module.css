@@ -20,7 +20,7 @@
 }
 .filterItems {
   margin: 0 9px;
-  opacity: 0.5;
+  opacity: 0.4;
   display: flex;
   align-items: center;
   font-size: 90%;
@@ -31,5 +31,5 @@
   opacity: 0.5;
 }
 .active {
-  opacity: 0.9 !important;
+  opacity: 1 !important;
 }

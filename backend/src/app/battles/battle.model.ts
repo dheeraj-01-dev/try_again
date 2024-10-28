@@ -138,24 +138,9 @@ const battleSchema = new Schema<schema>({
     },
   },
   teams: [
-    {
-      team: {
-        type: Schema.ObjectId,
-        required: true,
-        ref: "teams"
-      },
-      leader: {
-        type: String,
-        required: true
-      },
-      members: [
-        { 
-          type: String,
-          ref: "users",
-          required: true
-        }
-      ],
-      _id: false
+    { 
+      type: Array<string>,
+      ref: "users",
     }
   ]
 }, { timestamps: true })

@@ -1,27 +1,63 @@
 import battleModel from "./battle.model.js";
 import mongoose from "mongoose";
-import { teamModel } from "../team/team.model.js";
 import { userModel } from "../users/userModel.js";
 export const getAllBattles = async (req, res) => {
+    const { userName } = req.body;
     try {
-        const battle = await battleModel.aggregate([
-            {
-                '$addFields': {
-                    'tmpOrder': {
-                        '$rand': {}
+        if (userName) {
+            const battle = await battleModel.aggregate([
+                {
+                    '$addFields': {
+                        'tmpOrder': {
+                            '$rand': {}
+                        }
+                    }
+                }, {
+                    '$sort': {
+                        'tmpOrder': 1
+                    }
+                }, {
+                    '$match': {
+                        '$nor': [
+                            {
+                                'teams': {
+                                    '$elemMatch': {
+                                        '$elemMatch': {
+                                            '$eq': 'dheeraj.mafia'
+                                        }
+                                    }
+                                }
+                            }
+                        ]
                     }
                 }
-            }, {
-                '$sort': {
-                    'tmpOrder': 1
+            ]);
+            res.status(200).json({
+                success: true,
+                length: battle.length,
+                data: battle
+            });
+        }
+        else {
+            const battle = await battleModel.aggregate([
+                {
+                    '$addFields': {
+                        'tmpOrder': {
+                            '$rand': {}
+                        }
+                    }
+                }, {
+                    '$sort': {
+                        'tmpOrder': 1
+                    }
                 }
-            }
-        ]);
-        res.status(200).json({
-            success: true,
-            length: battle.length,
-            battle
-        });
+            ]);
+            res.status(200).json({
+                success: true,
+                length: battle.length,
+                data: battle
+            });
+        }
     }
     catch (err) {
         res.status(500).json({
@@ -68,10 +104,7 @@ export const joinBattle_C = async (req, res) => {
     session.startTransaction();
     try {
         const battleup = await battleModel.updateOne({ _id: battle }, {
-            $addToSet: { teams: { team, leader: authorization, members } }
-        }, { session, raw: false });
-        const teamup = await teamModel.updateOne({ _id: team }, {
-            $addToSet: { upcomingContest: { battle, leader: authorization, members } }
+            $addToSet: { teams: members }
         }, { session, raw: false });
         await userModel.updateOne({ userName: authorization }, {
             $inc: { balance: -battleInfo.entry }
@@ -93,7 +126,7 @@ export const joinBattle_C = async (req, res) => {
     }
 };
 export const getRegisteredBattle_C = async (req, res) => {
-    const { authorization } = req.headers;
+    const { authorization, userName } = req.headers;
     if (!authorization) {
         return;
     }
@@ -102,23 +135,14 @@ export const getRegisteredBattle_C = async (req, res) => {
         const data = await battleModel.aggregate([
             {
                 '$match': {
-                    '$or': [
-                        {
-                            'teams.members': 'dheeraj.mafia'
-                        }, {
-                            'teams.leader': 'dheeraj.mafia'
+                    'teams': {
+                        '$elemMatch': {
+                            '$elemMatch': {
+                                '$eq': userName
+                            }
                         }
-                    ]
+                    }
                 }
-            }, {
-                '$lookup': {
-                    'from': 'teams',
-                    'localField': 'teams.team',
-                    'foreignField': '_id',
-                    'as': 'teamDetails'
-                }
-            }, {
-                '$unset': 'teamDetails.upcomingContest'
             }
         ]);
         res.status(200).json({

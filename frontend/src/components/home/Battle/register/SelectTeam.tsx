@@ -49,7 +49,7 @@ const SelectTeam = ({
       <dialog id="modal" className={styles.modal}>
         <div className={styles.selectTeamTemplate}>
           <span>
-            {teams ? teams[0].teamName : ""}
+            Team members
             {children}
           </span>
           <div>
@@ -100,7 +100,7 @@ const SelectTeam = ({
                           <div>{team.admin[0]?.ffUid}</div>
                         </div>
                       </div>
-                      <div className={styles.adminTemplates}>leader</div>
+                      {/* <div className={styles.adminTemplates}>leader</div> */}
                     </div>
                   ) : (
                     <div>
@@ -183,7 +183,7 @@ const SelectTeam = ({
                             <div>{team.admin[0]?.ffUid}</div>
                           </div>
                         </div>
-                        <div className={styles.adminTemplates}>leader</div>
+                        {/* <div className={styles.adminTemplates}>leader</div> */}
                       </div>
                     </div>
                   )}

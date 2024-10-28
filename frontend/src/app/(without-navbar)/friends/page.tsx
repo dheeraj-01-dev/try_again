@@ -6,6 +6,7 @@ import { apiType } from '@/api/types/apiTypes'
 import Titles from '@/components/temp/Titles'
 import AllFriendSection from '@/components/friends/AllFriendSection'
 import FriendsSearchBox from '@/components/temp/FriendSearchBox'
+import Footer from '@/components/footer/Footer'
 
 const page = async () => {
   const cookieStore = cookies();
@@ -15,10 +16,16 @@ const page = async () => {
   const friends :Array<any>= json.data.friend_details; 
 
   return (
-    <div className={styles.newConversation}>
-      <Titles title="Friends" />
-      <FriendsSearchBox style={{marginBottom: "10px"}} />
-      <AllFriendSection friends={friends} />
+
+    <div>
+      <div className={styles.newConversation}>
+        <Titles title="Friends" />
+        <FriendsSearchBox style={{marginBottom: "10px"}} />
+        <AllFriendSection friends={friends} />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   )
 }

@@ -16,7 +16,7 @@ const Titles = ({
   return (
     <div style={styles}>
       <div style={titleBox}>
-        <NavigateBack home={home} styles={navigatorStyle}>
+        <NavigateBack styles={navigatorStyle}>
           <Image
             width={15}
             height={15}

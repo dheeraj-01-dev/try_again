@@ -7,10 +7,13 @@ const validateRegistration = (req:Request, res:Response, next:NextFunction)=>{
   const schema = z.object({
     name: z.string({message: "name required!"}).min(3, {message: "name must be min 3 character long."}).max(20, {message: "name must be less then 20 character."}),
     userName: z.string({message: "userName required!"}).min(3).max(24),
-    phone: z.number({message: "Invalid phone"}).min(999999999, {message: "Invalid Phone"}).max(9999999999, {message: "Invalid phone!"}),
+    // phone: z.number({message: "Invalid phone"}).min(999999999, {message: "Invalid Phone"}).max(9999999999, {message: "Invalid phone!"}),
     email: z.string({message: "email required!"}).email({message: "invaild email"}),
     ffUid: z.number({message: "Invalid ffUid!"}),
-    password: z.string({message: "password required!"}).min(8, {message: "password must be greater than 8 character"}).max(24, {message: "password must be smaller then 24 digits"})
+    otp: z.number({message: "Invalid Otp!"}),
+    ffUserName: z.string({message: "Invalid ffUserName!"}),
+    password: z.string({message: "password required!"}).min(8, {message: "password must be greater than 8 character"}).max(24, {message: "password must be smaller then 24 digits"}),
+    confirmPassword: z.string({message: "password required!"}).min(8, {message: "password must be greater than 8 character"}).max(24, {message: "password must be smaller then 24 digits"})
   });
   const validReq = schema.safeParse(req.body);
   if(!validReq.error){

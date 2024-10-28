@@ -85,7 +85,7 @@ const ConfirmationBattle = ({
         <div className={styles.teamBox}>
           <div className={styles.teamSelector}>
             <div>
-              {teams && teams[0].teamName}
+              Team members
               <span className={styles.selectedMemberLengthTemplate}>
                 ({memberArray.length}/{teamLenght})
               </span>

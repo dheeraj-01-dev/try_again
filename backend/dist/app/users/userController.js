@@ -3,15 +3,33 @@ import { userModel } from "./userModel.js";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
 import mongoose from "mongoose";
+import { verifyEmailAndOtpLocally } from "../auth/auth.controller.js";
+import { otpModel } from "../auth/auth.model.js";
 config();
 const jwt_secret = process.env.JWT_SECRET_STR ||
     "MAI_HU_DON_MAI_HU_DON....MUJHE_ROKEGA_KON>?SKLDFJ2934N23MNR09DNMIUAE90UNDAKFIH9OA8U90U9&*_+_89JH898'ASDF";
 export const registerUser = async (req, res) => {
-    const { name, userName, phone, email, ffUid, password } = req.body;
+    const { name, otp, userName, phone, email, ffUid, ffUserName, password, confirmPassword } = req.body;
     try {
+        if (password !== confirmPassword) {
+            return res.status(400).json({
+                success: false,
+                error: `password and confirmPassword doesn't matched!`,
+            });
+        }
+        const verified = await verifyEmailAndOtpLocally({ email, otp });
+        if (!verified.success) {
+            return res.status(400).json({
+                success: false,
+                error: `Invalid Otp !`,
+            });
+        }
+        ;
+        await otpModel.deleteMany({ email, otp });
         const hashedPassword = await bcrypt.hash(password, 12);
         const user = await userModel.create({
             ffUid,
+            ffUserName,
             name,
             userName,
             phone,
@@ -22,7 +40,12 @@ export const registerUser = async (req, res) => {
         const token = jwt.sign({ name, userName, ffUid, _id, createAt }, jwt_secret);
         res.status(200).json({
             success: true,
-            userToken: token,
+            data: {
+                token,
+                _id,
+                profile: "/icons/user.png",
+                userName,
+            },
         });
     }
     catch (err) {

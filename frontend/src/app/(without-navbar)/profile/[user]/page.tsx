@@ -10,7 +10,7 @@ const page = ({params}: {params :any}) => {
   return (
     <div className={styles.profile}>
       <Header userName={user}/>
-      <UserProfile style={{marginTop: 20}} name='khuts' uid={44533432} />
+      <UserProfile profile='' style={{marginTop: 20}} name='khuts' uid={44533432} />
       <MatchQuery style={{marginTop: 15}} />
     </div>
   )

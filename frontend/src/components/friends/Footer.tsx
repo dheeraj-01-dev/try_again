@@ -23,9 +23,9 @@ const Footer = () => {
       <div className={`${styles.footerElements} ${message&&styles.active}`}>
         <Link href={"/friends/chats"}><Image width={23} height={23} alt='m' src="/icons/chat-a7.png" /></Link>
       </div>
-      <div className={`${styles.footerElements} ${teams&&styles.active}`}>
+      {/* <div className={`${styles.footerElements} ${teams&&styles.active}`}>
         <Link href={"/friends/teams"}><Image width={30} height={23} alt='m' src="/icons/friends-a7.png" /></Link>
-      </div>
+      </div> */}
       <div className={`${styles.footerElements} ${friends&&styles.active}`}>
         <Link href={"/friends"}><Image width={23} height={23} alt='m' src="/icons/user-a7.png" /></Link>
       </div>

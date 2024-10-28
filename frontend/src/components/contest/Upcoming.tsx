@@ -5,7 +5,7 @@ import ContestCard from "./ContestCard";
 const Upcoming = ({ upcomingBattle }: { upcomingBattle?: any[] }) => {
   
   return (
-    <div>
+    <div style={{overflow: 'auto'}}>
       {upcomingBattle ? (
         <div style={{display: "grid", gridGap: "10px"}}>
           {upcomingBattle?.map((obj:any)=>{return <ContestCard key={obj._id} battle={obj} />})}

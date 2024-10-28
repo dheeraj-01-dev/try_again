@@ -9,18 +9,19 @@ const closeFriendsLimit = (val :any)=>{
 
 interface schema{
   balance: Number,
-    name: string,
-    ffUid: Number,
-    profile: string,
+  name: string,
+  ffUid: Number,
+  ffUserName: string,
+  profile: string,
   userName: string,
   phone: Number,
   email: string,
-  guild: Schema.Types.ObjectId,
+  // guild: Schema.Types.ObjectId,
   friends: {
     closeFriends: Schema.Types.ObjectId,
     allFriends: Schema.Types.ObjectId
   },
-  team: Schema.Types.ObjectId,
+  // team: Schema.Types.ObjectId,
   upcomingBattles: [Schema.Types.ObjectId],
   password: string,
   createAt: string
@@ -40,14 +41,18 @@ const userSchema = new Schema<schema>({
     type: Number,
     required: [true, "please enter your free fire uid...."]
   },
+  ffUserName: {
+    type: String,
+    required: [true, "please enter your free fire userName...."]
+  },
   profile: {
     type: String,
-    default: "./default/profile.png"
+    default: "http://127.0.0.1:3000/banner/default-banner.jpg"
   },
   phone: {
     type: Number,
     unique: true,
-    required: [true, "Please enter your phone number...."],
+    // required: [true, "Please enter your phone number...."],
   },
   userName: {
     type: String,
@@ -69,10 +74,10 @@ const userSchema = new Schema<schema>({
       validate: [friendsLimit, "max no. of friends reached."]
     }
   },
-  team: {
-    type: mongoose.Types.ObjectId,
-    ref: "teams"
-  },
+  // team: {
+  //   type: mongoose.Types.ObjectId,
+  //   ref: "teams"
+  // },
   password: {
     type: String,
     required: [true, "please choose a password...."]

@@ -19,9 +19,9 @@ const Footer = () => {
   
   return (
     <div className={styles.footerContainer}>
-      <Link href="/tournament">
+      {/* <Link href="/tournament">
         <Image className={`${tournament&&styles.active}`} height={21} width={23} alt='' src="/icons/trophy-a7.png" />
-      </Link>
+      </Link> */}
       <Link href="/leaderboard">
         <Image className={`${leaderboard&&styles.active}`} height={23} width={23} alt='' src="/icons/poll-a7.png" />
       </Link>
@@ -31,7 +31,7 @@ const Footer = () => {
       <Link href="/contest">
         <Image className={`${contest&&styles.active}`} height={23} width={23} alt='' src="/icons/cart-a7.png" />
       </Link>
-      <Link href="/friends/chats">
+      <Link href="/friends">
         <Image className={`${friends&&styles.active}`} height={23} width={30} alt='' src="/icons/friends-a7.png" />
       </Link>
     </div>

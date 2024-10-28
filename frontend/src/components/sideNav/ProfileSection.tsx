@@ -9,17 +9,17 @@ const ProfileSection = () => {
   const cookieStore = cookies();
   const userToken :string | undefined = cookieStore.get("u_state")?.value;
   const decodedUser :any = userToken&&jwt.decode(userToken);
-  const { name, ffUid } = decodedUser?decodedUser:{name: "", ffUid: ""};
+  const { name, ffUid, userName } = decodedUser?decodedUser:{name: "", ffUid: "", userName: ""};
   
   return (
     <div className={styles.profile}>
       {decodedUser?<Link href="/profile" className={styles.linkContainer}>
         <div className={styles.profilePic}>
-          <Image height={60} width={60} alt='' unoptimized src="/temp-profile.png" />
+          <Image height={60} width={60} alt='' src="http://127.0.0.1:3000/banner/default-banner.jpg" />
           {/* <img src="/men.png" alt="" /> */}
         </div>
         <div className={styles.identity}>
-          <div className={styles.name}>{"UN-DEFE4TED"}</div>
+          <div className={styles.name}>{userName}</div>
           <div className={styles.uid}>{ffUid}</div>
         </div>
       </Link>:<div className={styles.loginContainer}>

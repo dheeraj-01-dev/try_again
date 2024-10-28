@@ -26,11 +26,15 @@
 @media screen and (min-width: 800px) {
   .sideNavContainer{
     left: 0;
+    /* display: none; */
     top: 58px;
     width: 250px;
     padding: 0 0 10px 20px;
     height: calc(100vh - 58px);
     background-color: var(--bg-10);
     border-right: 2px solid var(--bg-8);
+  }
+  .sideNavCover{
+    display: none;
   }
 }

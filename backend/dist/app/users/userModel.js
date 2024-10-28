@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 const friendsLimit = (val) => {
     return val.length <= 200;
 };
@@ -19,14 +19,17 @@ const userSchema = new Schema({
         type: Number,
         required: [true, "please enter your free fire uid...."]
     },
+    ffUserName: {
+        type: String,
+        required: [true, "please enter your free fire userName...."]
+    },
     profile: {
         type: String,
-        default: "./default/profile.png"
+        default: "http://127.0.0.1:3000/banner/default-banner.jpg"
     },
     phone: {
         type: Number,
         unique: true,
-        required: [true, "Please enter your phone number...."],
     },
     userName: {
         type: String,
@@ -47,10 +50,6 @@ const userSchema = new Schema({
             type: [{ type: Schema.ObjectId, ref: "users" }],
             validate: [friendsLimit, "max no. of friends reached."]
         }
-    },
-    team: {
-        type: mongoose.Types.ObjectId,
-        ref: "teams"
     },
     password: {
         type: String,

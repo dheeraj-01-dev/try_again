@@ -8,15 +8,15 @@ const AllFriendSection = ({friends} : {friends: Array<any>}) => {
 
   const foucusTargetFriend =  async (e :any)=>{
     
-    for (let i = 0; i < e.currentTarget.parentNode.children.length; i++) {
-      const elements = e.currentTarget.parentNode.children[i];
-      
+      // for (let i = 0; i < e.currentTarget.parentNode.children.length; i++) {
+      //   const elements = e.currentTarget.parentNode.children[i];
+        
 
-      elements.classList.remove(styles.activeBorder);
-      elements.children[1].classList.remove(styles.showActionBox);
-    }
-    e.currentTarget.classList.toggle(styles.activeBorder);
-    e.currentTarget.children[1].classList.toggle(styles.showActionBox);
+      //   elements.classList.remove(styles.activeBorder);
+      //   elements.children[1].classList.remove(styles.showActionBox);
+      // }
+      // e.currentTarget.classList.toggle(styles.activeBorder);
+      // e.currentTarget.children[1].classList.toggle(styles.showActionBox);
     }
 
 

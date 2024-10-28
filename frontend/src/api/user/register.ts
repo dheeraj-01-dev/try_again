@@ -5,25 +5,26 @@ import { apiType } from "../types/apiTypes";
 
 const domain = process.env.server_domain;
 
-const registerUser = async ({Name, ffUid, userName, phone, email, password}: {
-  phone: string,
+const registerUser = async ({name, ffUid, otp, ffUserName, userName, email, password, confirmPassword}: {
   email: string,
+  otp: string,
   password: string,
-  Name: string,
+  name: string,
   ffUid: string,
-  userName: string
+  ffUserName: string,
+  userName: string,
+  confirmPassword: string
 }) => {
   try {
     const json :apiType= await axios({
       method: "POST",
       url: `${domain}/user/auth/register`,
       data: {
-        "name": Name,
-        "ffUid": parseInt(ffUid?ffUid:""),
-        "userName": userName,
-        "phone": parseInt(phone?phone:""),
-        "email": email,
-        "password": password
+        name, otp: +otp,
+        "ffUid": +ffUid,
+        userName, ffUserName,
+        // "phone": parseInt(phone?phone:""),
+        email, password, confirmPassword
       }
     });
     return json.data;

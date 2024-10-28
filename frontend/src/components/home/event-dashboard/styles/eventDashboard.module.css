@@ -109,9 +109,23 @@
   }
 }
 
+.manualControls {
+  display: none;
+}
 /* Hide scroll buttons on smaller screens */
 @media (max-width: 1024px) {
   .manualControls {
     display: none;
+  }
+}
+@media (min-width: 800px) {
+  .eventDashboardContainer{
+    height: 200px;
+  }
+  .posterBoard{
+    height: 180px;
+  }
+  .imgParent{
+    height: 170px;
   }
 }

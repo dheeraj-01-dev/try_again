@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import style from "./style/BattleCard.module.css";
+import styles from './style/BattleCard.module.css'
 // import { isLogin } from "@/hooks/isLogin";
 import { cookies } from "next/headers";
 
@@ -67,8 +67,8 @@ const BattleCard = ({
   const isLogin = cokkieStore.get("u_state");
 
   return (
-    <div className={`${style.battle_card} ${style.section}`}>
-      <div className={style.battle_card_header}>
+    <div className={`${styles.battle_card} ${styles.section}`}>
+      <div className={styles.battle_card_header}>
         {gameMode} &nbsp; [{map}]
         <Image
           // onClick={share}
@@ -80,42 +80,42 @@ const BattleCard = ({
         />
       </div>
       <Link href={`/battle/${_id}`}>
-        <div className={style.battle_card_section_1}>
-          <div className={style.battle_card_img}>
+        <div className={styles.battle_card_section_1}>
+          <div className={styles.battle_card_img}>
             {/* <Kalahari /> */}
             <Image
               src={`/maps/${map}.png`}
               width={140}
               height={73}
               alt="battle_card_thumbnail"
-              className={style.battle_card_thumbnail}
+              className={styles.battle_card_thumbnail}
             />
           </div>
-          <div className={style.battle_card_info}>
-            <div className={style.battle_card_info_header}>
+          <div className={styles.battle_card_info}>
+            <div className={styles.battle_card_info_header}>
               {teamMode} {ammo} #{year}
             </div>
-            <div className={style.battle_card_date_section}>
+            <div className={styles.battle_card_date_section}>
               {/* {date} */}
               27 June, 2024 | 17:00
-              <div className={style.battle_card_info_organiser}>
+              <div className={styles.battle_card_info_organiser}>
                 organised by admin
               </div>
             </div>
           </div>
         </div>
       </Link>
-      <div className={style.battle_card_section_2}>
+      <div className={styles.battle_card_section_2}>
         <Link
           href={isLogin ? `/battle/checkout/${_id}` : "/login"}
-          className={`${!isLogin && style.disable_light} ${
-            teams.length >= slots && style.disable
-          } ${style.battle_card_btn}`}
+          className={`${!isLogin && styles.disable_light} ${
+            teams.length >= slots && styles.disable
+          } ${styles.battle_card_btn}`}
         >
           Join now - {entry}
         </Link>
         <Link href={`/battle/${_id}`}>
-          <div className={style.battle_card_winnings}>
+          <div className={styles.battle_card_winnings}>
             <Image
               width={33}
               height={27}
@@ -127,13 +127,13 @@ const BattleCard = ({
         </Link>
       </div>
       <Link href={`/battle/${_id}`}>
-        <div className={style.battle_card_footer}>
-          <span className={style.battle_card_count}>
+        <div className={styles.battle_card_footer}>
+          <span className={styles.battle_card_count}>
             {teams.length}/{slots}
           </span>
-          <div className={style.battle_card_outliner}>
+          <div className={styles.battle_card_outliner}>
             <div
-              className={style.battle_card_outliner_count}
+              className={styles.battle_card_outliner_count}
               style={{ width: (teams.length * 100) / slots + "%" }}
             ></div>
           </div>
